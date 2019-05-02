@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wallet/default.css' %}">
+
     <title>Wallet management</title>
 </head>
 <body>
     <h1>Gestion du compte</h1>
+    <hr>
     <p>Les comptes ici :</p>
-    <ul>
-        {% for account in accounts %}
-            <li>account id {{ account.id }}</li>
-        {% endfor %}
-    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Account id</td>
+                <td>Balance</td>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.id }}</td>
+                    <td>{{ account.balance }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </body>
 </html>

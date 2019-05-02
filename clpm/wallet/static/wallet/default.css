@@ -1,0 +1,30 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table td
+{
+    
+    border: #444 solid 1px;
+}
+
+table thead td
+{
+    padding: 5px 50px;
+    text-align: left;
+    background-color: #CCC;
+}
+
+table tbody td
+{
+    padding: 3px;
+}
