@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wallet management</title>
+</head>
+<body>
+    <h1>Gestion du compte</h1>
+    <p>Les comptes ici :</p>
+    <ul>
+        {% for account in accounts %}
+            <li>account id {{ account.id }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
