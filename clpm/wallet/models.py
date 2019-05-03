@@ -11,6 +11,16 @@ from django.db import models
 # Account class
 class Account(models.Model):
     balance = models.FloatField(default=0.0)
+    name = models.CharField(max_length = 255,default='account')
+    
+    def checkBalance(self,balance):
+    	if(balance <= 0):
+    		return False
+    	else:
+    		return True
+
+
+
 
 
 # Account transaction, follow transactions on an account
