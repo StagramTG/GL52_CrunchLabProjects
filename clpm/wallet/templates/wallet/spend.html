@@ -8,6 +8,7 @@
         <span class="line"></span>
     </nav>
 </header>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,30 +17,9 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'wallet/default.css' %}">
 
-    <title>Wallet management</title>
+
 </head>
 <body>
-    <h1>Gestion du compte</h1>
-    <hr>
-    <p>Les comptes ici :</p>
-
-    <table>
-        <thead>
-            <tr>
-                <td>Account id</td>
-                <td>Balance</td>
-            </tr>
-        </thead>
-        
-        <tbody>
-            {% for account in accounts %}
-                <tr>
-                    <td>{{ account.id }}</td>
-                    <td>{{ account.balance }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
+	
+	<h1>depenser ici</h1>
 </body>
-</html>

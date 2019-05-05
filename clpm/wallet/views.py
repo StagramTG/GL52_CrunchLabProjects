@@ -9,3 +9,7 @@ def index(request):
         'accounts': Account.objects.all()
     }
     return render(request, 'wallet/default.html', context)
+def charge(request):
+	return render(request, 'wallet/charge.html')
+def spend(request):
+	return render(request, 'wallet/spend.html')
