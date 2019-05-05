@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<header id="header">
-    <nav class="links" style="--items: 3;">
-        <a href="">Acceuil</a>
-        <a href="charge">Recharger</a>
-        <a href="spend">Boutique</a>
-        <span class="line"></span>
-    </nav>
-</header>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +11,12 @@
 
     <title>Wallet management</title>
 </head>
+
+
+<div class="menu">
+    {% include "wallet/menu.html" %}
+</div>
+
 <body>
     <h1>Gestion du compte</h1>
     <hr>
