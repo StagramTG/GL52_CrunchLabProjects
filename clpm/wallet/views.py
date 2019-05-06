@@ -9,7 +9,7 @@ def index(request):
         'title': "Compte | Accueil",
         'accounts': Account.objects.all()
     }
-    return render(request, 'wallet/default.html', context)
+    return render(request, 'wallet/index.html', context)
 
 
 def charge(request):
