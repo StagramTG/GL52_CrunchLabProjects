@@ -18,10 +18,6 @@ class Account(models.Model):
     		return False
     	else:
     		return True
-    
-
-
-
 
 
 # Account transaction, follow transactions on an account

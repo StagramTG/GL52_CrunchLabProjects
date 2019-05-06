@@ -1,0 +1,18 @@
+/* Sidenav theming */
+#menu-section
+{
+    height: 100vh;
+
+    background-color: hsl(0, 0%, 21%);
+    color: hsl(0, 0%, 100%);
+}
+
+#menu-section a, #menu-section p
+{
+    color: hsl(0, 0%, 100%);
+}
+
+#menu-section a:hover
+{
+    background-color: hsl(0, 0%, 4%);
+}

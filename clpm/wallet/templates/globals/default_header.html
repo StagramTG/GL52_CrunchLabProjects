@@ -7,9 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'globals/bulma.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'wallet/default.css' %}">
 
     <title>{{ title }}</title>
 </head>
 
 <body>
+    <div class="">
+        <div class="columns">
+            <div class="column is-3">
+                <div class="section" id="menu-section">
+                {% include "globals/default_nav.html" %}
+                </div>
+            </div>
+
+            <div class="column is-9">
+                <div class="section">

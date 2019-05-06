@@ -1,8 +1,10 @@
-<header id="header">
-    <nav class="links" style="--items: 3;">
-        <a href="{% url 'index'%}">Accueil</a>
-        <a href="{% url 'charge'%}">Recharger</a>
-        <a href="{% url 'spend'%}">Boutique</a>
-        <span class="line"></span>
-    </nav>
-</header>
+<aside class="menu">
+    <p class="menu-label">
+        Gestion de compte
+    </p>
+    <ul class="menu-list">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li><a href="{% url 'reload' %}">Rechargements</a></li>
+        <li><a href="{% url 'shop' %}">Boutique</a></li>
+    </ul>
+</aside>
