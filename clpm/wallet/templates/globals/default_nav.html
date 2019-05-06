@@ -1,14 +1,16 @@
 <aside class="menu">
-    <p class="menu-label">
-        Gestion de compte
-    </p>
     <ul class="menu-list">
         <li><a href="{% url 'index' %}">Accueil</a></li>
 
         {% if current_account %}
-            <li><a href="{% url 'account' current_account.id %}">Détails du compte</a></li>
-            <li><a href="{% url 'reload' current_account.id %}">Rechargements</a></li>
-            <li><a href="{% url 'shop' current_account.id %}">Boutique</a></li>
+            <li>
+                <a class="is-active">Gestion du compte</a>
+                <ul>
+                        <li><a href="{% url 'account' current_account.id %}">Détails du compte</a></li>
+                        <li><a href="{% url 'reload' current_account.id %}">Rechargements</a></li>
+                        <li><a href="{% url 'shop' current_account.id %}">Boutique</a></li>
+                </ul>
+            </li>
         {% endif %}
     </ul>
 </aside>

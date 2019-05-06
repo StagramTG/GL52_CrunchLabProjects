@@ -35,19 +35,26 @@ def account_index(request, id = -1):
 
 
 def reload(request, id):
-    account = getAccount(request, id)
+    # Get request processing
+    if(request.method == 'GET'):
+        account = getAccount(request, id)
 
-    # Check if account has been found
-    if(account == None):
-        redirect('index')
+        # Check if account has been found
+        if(account == None):
+            redirect('index')
 
-    # Set session
-    request.session['current_account_id'] = account.id
+        # Set session
+        request.session['current_account_id'] = account.id
 
-    context = {
-        'title': "Compte | Rechargement",
-        'current_account': account,
-    }
+        context = {
+            'title': "Compte | Rechargement",
+            'current_account': account,
+        }
+
+    # POST request processing
+    elif(request.method == 'POST'):
+        pass
+    
     return render(request, 'wallet/reload.html', context)
 
 
