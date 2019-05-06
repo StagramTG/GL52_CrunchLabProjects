@@ -5,9 +5,10 @@
     <ul class="menu-list">
         <li><a href="{% url 'index' %}">Accueil</a></li>
 
-        {% if True %}
-            <li><a href="{% url 'reload' %}">Rechargements</a></li>
-            <li><a href="{% url 'shop' %}">Boutique</a></li>
+        {% if current_account %}
+            <li><a href="{% url 'account' current_account.id %}">Détails du compte</a></li>
+            <li><a href="{% url 'reload' current_account.id %}">Rechargements</a></li>
+            <li><a href="{% url 'shop' current_account.id %}">Boutique</a></li>
         {% endif %}
     </ul>
 </aside>

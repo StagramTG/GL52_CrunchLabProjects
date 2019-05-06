@@ -1,14 +1,14 @@
 {% include "globals/default_header.html" %}
 
-    <h1>Gestion du compte</h1>
-    <hr>
-    <p>Les comptes ici :</p>
+    <h1 class="title">Index des comptes</h1>
 
-    <table>
+    <table class="table is-bordered is-striped is-fullwidth is-hoverable">
         <thead>
             <tr>
-                <td>Account id</td>
-                <td>Balance</td>
+                <th>id</th>
+                <th>Nom du compte</th>
+                <th>Balance</th>
+                <th></th>
             </tr>
         </thead>
         
@@ -16,7 +16,9 @@
             {% for account in accounts %}
                 <tr>
                     <td>{{ account.id }}</td>
+                    <td>{{ account.name }}</td>
                     <td>{{ account.balance }}</td>
+                    <td><a href="{% url 'account' account.id %}">Gérer</a></td>
                 </tr>
             {% endfor %}
         </tbody>
