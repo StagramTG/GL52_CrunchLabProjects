@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'wallet/default.css' %}">
-</head>
+{% include "globals/default_header.html" %}
 
 <div class="menu">
     {% include "wallet/menu.html" %}
 </div>
 
-<body>
     <form>
         <label for="card_name">Nom du titulaire de la carte :</label>
         <input id="card_name" type="text" name="card_name" value="">
@@ -30,4 +19,5 @@
 
         <input type="submit" value="OK">
     </form>
-</body>
+
+{% include "globals/default_footer.html" %}

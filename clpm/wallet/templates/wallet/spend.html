@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'wallet/default.css' %}">
-</head>
+{% include "globals/default_header.html" %}
 
 
 <div class="menu">
     {% include "wallet/menu.html" %}
 </div>
-
-<body>
 	
 	<h1>depenser ici</h1>
-</body>
+
+{% include "globals/default_footer.html" %}
