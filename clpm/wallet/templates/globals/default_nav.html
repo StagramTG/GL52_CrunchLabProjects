@@ -4,7 +4,10 @@
     </p>
     <ul class="menu-list">
         <li><a href="{% url 'index' %}">Accueil</a></li>
-        <li><a href="{% url 'reload' %}">Rechargements</a></li>
-        <li><a href="{% url 'shop' %}">Boutique</a></li>
+
+        {% if True %}
+            <li><a href="{% url 'reload' %}">Rechargements</a></li>
+            <li><a href="{% url 'shop' %}">Boutique</a></li>
+        {% endif %}
     </ul>
 </aside>
