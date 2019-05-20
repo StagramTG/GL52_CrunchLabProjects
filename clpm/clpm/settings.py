@@ -40,7 +40,10 @@ INSTALLED_APPS = [
 
     # project apps
     'wallet.apps.WalletConfig',
+    'users.apps.UsersConfig',
 ]
+
+AUTH_USER_MODEL = 'users.ClpmUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
