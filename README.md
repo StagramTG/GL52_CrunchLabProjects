@@ -6,7 +6,9 @@ Projet à réaliser dans le cadre de l'UV GL52
 ## Installation
 - Cloner le dépôt git
 - Faire les migrations avec `python manage.py migrate`
-- Lancer le serveur de dev python avec la commande `python manage.py runserver`
+- Les deux en parallèle :
+    + Lancer le serveur de dev python avec la commande `python manage.py runserver`
+    + Lancer le serveur de dev NPM depuis le dossier static/js `npm run serve`
 
 ## ToDo
 - Gestion des utilisateurs :
@@ -19,3 +21,11 @@ Projet à réaliser dans le cadre de l'UV GL52
         - Page de gestion des comptes
         - Page de gestion des projets
         - Page de gestion des informations personnelles
+    + **/!\ Mettre en place une API REST pour l'application Vue.js /!\ :**
+        - Suppléments à installer :
+            * Django REST Framework
+            * Django Cors Headers (Requête AJAX côté serveur)
+            * Vue-Router (Routing côté client)
+            * Axios (Requête AJAX côté client)
+            * VueX (Store de données côté client)
+        - Gestion de l'authentification
