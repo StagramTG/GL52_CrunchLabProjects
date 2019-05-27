@@ -22,6 +22,7 @@ Projet à réaliser dans le cadre de l'UV GL52
         - Page de gestion des projets
         - Page de gestion des informations personnelles
     + **/!\ Mettre en place une API REST pour l'application Vue.js /!\ :**
+        - lien utile --> https://www.techiediaries.com/django-vuejs-api-views/
         - Suppléments à installer :
             * Django REST Framework
             * Django Cors Headers (Requête AJAX côté serveur)
