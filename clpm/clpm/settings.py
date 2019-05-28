@@ -38,10 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #rest framework
+    'rest_framework',
+    'rest_framework.authtoken',
+
     # project apps
     'wallet.apps.WalletConfig',
     'users.apps.UsersConfig',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', )
+}
 
 AUTH_USER_MODEL = 'users.ClpmUser'
 
