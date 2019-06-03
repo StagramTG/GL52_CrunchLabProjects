@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 import datetime
 
 """
@@ -31,19 +31,23 @@ class AccountReload(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     account_id = models.ForeignKey(to=Account, on_delete=models.CASCADE)
 
-
 """
 Class User
 Custom user model that takes differents fields in consideration
 for needs of the project.
 """
-class User(AbstractBaseUser):
-    first_name = models.CharField(max_length=50)
-    last_name  = models.CharField(max_length=50)
-    mail       = models.EmailField()
-    location   = models.CharField(max_length=256)
-    phone      = models.CharField(max_length=15)
-    account_id = models.ForeignKey(to=Account, on_delete=models.CASCADE)
+class User(AbstractUser):
+    email      = models.EmailField(unique=True)
+    location   = models.CharField(max_length=255, blank=True)
+    phone      = models.CharField(max_length=15, blank=True)
+    account_id = models.ForeignKey(to=Account, on_delete=models.CASCADE, blank=True, null=True)
+    is_admin   = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
+
+    class Meta:
+        abstract = False
 
     def __str__(self):
         return "%s %s" % (self.first_name, self.last_name)

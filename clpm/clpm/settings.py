@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Custom user model
+AUTH_USER_MODEL = 'restapi.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
