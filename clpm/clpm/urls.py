@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
-from restapi.views import TestViews
+from restapi.views import userviews
 
 router = routers.DefaultRouter()
-router.register('test', TestViews)
+router.register('test', userviews.TestViews)
 
 urlpatterns = [
     path('api/', include(router.urls)),
