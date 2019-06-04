@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from ..models import Account
-from ..serializers import AccountSerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-# Create your views here.
-class TestViews(viewsets.ModelViewSet):
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+from ..models import User
+from ..serializers import UserSerializer
+
+@api_view(['GET'])
+def users_list(request):
+    users = User.objects.all()
+    serializer = UserSerializer(users, many=True)
+    return Response(data=serializer.data)

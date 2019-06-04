@@ -19,11 +19,8 @@ from django.urls import path, include
 from rest_framework import routers
 from restapi.views import userviews
 
-router = routers.DefaultRouter()
-router.register('test', userviews.TestViews)
-
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('api/', userviews.users_list),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
 ]
