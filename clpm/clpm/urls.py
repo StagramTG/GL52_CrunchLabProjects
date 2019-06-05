@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
+
+from restapi.views import index
 from restapi.views import userviews
 
 urlpatterns = [
+    path('', index.main),
     path('api/', userviews.users_list),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
