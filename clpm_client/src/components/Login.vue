@@ -47,6 +47,7 @@ export default {
             {
                 console.log(response);
                 self.loginSuccess = true;
+                self.$router.push({name: 'app'});
             })
             .catch(function(error) 
             { 
