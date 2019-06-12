@@ -1,21 +1,23 @@
 <template>
     <div class="login">
         <div class="login-form">
-            <p class="title">Connexion</p>
+            <p class="title">Connexion <br><small>Gestion de projet pour le Crunch Lab</small></p>
+
+            <p v-show="loginSuccess">Connecté avec succès !</p>
 
             <div class="form">
                 <div class="form-field">
                     <span>Email</span>
-                    <input type="email" name="username" placeholder="ex: example@example.fr">
+                    <input type="email" name="username" placeholder="ex: example@example.fr" v-model="username">
                 </div>
 
                 <div class="form-field">
                     <span>Mot de passe</span>
-                    <input type="password" name="password" placeholder="************">
+                    <input type="password" name="password" placeholder="************" v-model="password">
                 </div>
 
                 <br>
-                <input type="button" value="Se connecter">
+                <input type="button" value="Se connecter" @click="login()">
             </div>
 
         </div>
@@ -23,8 +25,35 @@
 </template>
 
 <script>
+/* eslint-disable */
+import axios from '@/services/api'
+
 export default {
-    
+    data: function() {
+        return {
+            username: '',
+            password: '',
+            loginSuccess: false
+        }
+    },
+    methods: {
+        login: function() {
+            let self = this;
+            axios.post('api-auth/login/', {
+                username: this.username,
+                password: this.password
+            })
+            .then(function(response) 
+            {
+                console.log(response);
+                self.loginSuccess = true;
+            })
+            .catch(function(error) 
+            { 
+                console.log(error); 
+            })
+        }
+    }
 }
 </script>
 
@@ -49,6 +78,11 @@ export default {
                 font-size: 42px;
 
                 margin: 20px 0;
+
+                small 
+                {
+                    font-size: 35%;
+                }
             }
 
             .form
@@ -92,9 +126,12 @@ export default {
                     outline: none;
                     cursor: pointer;
 
+                    background-color: #029060;
+                    color: white;
+
                     &:hover
                     {
-                        background-color: #CCCCCC;
+                        background-color: #03b65a;
                     }
                 }
             }
