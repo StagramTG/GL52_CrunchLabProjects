@@ -1,4 +1,5 @@
 // const IS_PRODUCTION = process.env.NODE_ENV === 'production'
+var path = require('path');
 
 module.exports = {
     outputDir: 'dist',
@@ -11,6 +12,7 @@ module.exports = {
     // Whitenoise will serve once to CDN which will then cache
     // and distribute
     devServer: {
+        clientLogLevel: 'none',
         proxy: {
             '/api*': {
                 // Forward frontend dev server request for /api to django dev server
