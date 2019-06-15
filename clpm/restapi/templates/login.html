@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CLPM | Connexion</title>
+</head>
+<body>
+    <form action="/api-auth/login/" method="post" required autofocus>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="/validatelogin">
+
+        <p>Email</p>
+        <input type="email" name="username">
+
+        <p>Mot de passe</p>
+        <input type="password" name="password" required>
+
+        <input type="submit" value="Se connecter">
+    </form>
+</body>
+</html>
