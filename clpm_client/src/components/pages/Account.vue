@@ -32,7 +32,7 @@
                 </tbody>
             </table>
 
-            <a href="" class="button danger">Modifier</a>
+            <router-link :to="{name: 'app.account.update'}" class="button danger">Modifier</router-link>
         </div>
     </div>
 </template>

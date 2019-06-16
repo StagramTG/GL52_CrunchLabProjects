@@ -13,6 +13,8 @@ import Account from '@/components/pages/Account.vue'
 import Wallet from '@/components/pages/Wallet.vue'
 import Projects from '@/components/pages/Projects.vue'
 
+import AccountUpdate from '@/components/pages/AccountUpdate.vue'
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -47,6 +49,12 @@ const router = new VueRouter({
                     path: 'account',
                     component: Account,
                     name: 'app.account',
+                    meta: {authenticationNeeded: true},
+                },
+                {
+                    path: 'account/update',
+                    component: AccountUpdate,
+                    name: 'app.account.update',
                     meta: {authenticationNeeded: true},
                 },
                 {
