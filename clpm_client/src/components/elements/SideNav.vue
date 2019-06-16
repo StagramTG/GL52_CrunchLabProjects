@@ -1,10 +1,10 @@
 <template>
     <div class="sidenav">
         <ul class="menu">
-            <li><router-link to="/">Accueil</router-link></li>
-            <li><router-link to="/account">Compte</router-link></li>
-            <li><router-link to="/wallet">Portefeuille</router-link></li>
-            <li><router-link to="/project">Projets</router-link></li>
+            <li><router-link to="/app/home">Accueil</router-link></li>
+            <li><router-link to="/app/account">Compte</router-link></li>
+            <li><router-link to="/app/wallet">Portefeuille</router-link></li>
+            <li><router-link to="/app/projects">Projets</router-link></li>
         </ul>
     </div>
 </template>
