@@ -20,12 +20,7 @@ export const router = new VueRouter({
         { 
             path: '/', 
             name: 'root', 
-            redirect: to => { 
-                if(Cookies.get('sessionid')) {
-                    console.log(to);
-                    return;
-                }
-            } 
+            redirect: '/login'
         },
         { path: '/login', component: Login, name: 'login' },
         { 
@@ -35,27 +30,27 @@ export const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    redirect: '/app/home'
+                    redirect: 'home'
                 },
                 {
                     path: 'home',
                     component: Home,
-                    name: 'home'
+                    name: 'app.home'
                 },
                 {
                     path: 'account',
                     component: Account,
-                    name: 'account'
+                    name: 'app.account'
                 },
                 {
                     path: 'wallet',
                     component: Wallet,
-                    name: 'wallet'
+                    name: 'app.wallet'
                 },
                 {
                     path: 'projects',
                     component: Projects,
-                    name: 'projects'
+                    name: 'app.projects'
                 }
             ]
         }

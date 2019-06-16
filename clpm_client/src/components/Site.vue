@@ -20,6 +20,9 @@ export default {
         SideNav,
         Navbar
     },
+    mounted() {
+        this.$router.push({name: 'app.home'});
+    }
 }
 </script>
 
