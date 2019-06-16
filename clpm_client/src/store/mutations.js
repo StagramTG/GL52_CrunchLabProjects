@@ -1,3 +1,9 @@
 export const mutations = {
-    // mutations methods
+    setUsername(state, username) {
+        state.username = username;
+    },
+
+    clearUsername(state) {
+        state.username = '';
+    }
 }

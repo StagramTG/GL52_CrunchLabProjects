@@ -48,6 +48,7 @@ export default {
             {
                 console.log(response.headers)
                 self.loginSuccess = true;
+                self.$store.commit('setUsername', response.data.username);
                 self.$router.push({name: 'app'});
             })
             .catch(function(error) 

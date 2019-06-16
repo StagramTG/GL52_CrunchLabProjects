@@ -6,10 +6,6 @@
 </template>
 
 <script>
-/* eslint-disable */
-import Cookies from 'js-cookie'
-import axios from '@/services/api'
-
 import SideNav from './elements/SideNav.vue'
 import Navbar from './elements/Navbar.vue'
 
