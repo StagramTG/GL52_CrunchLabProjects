@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Cookies from 'js-cookie'
+import store from './store/index'
 
 import Login from '@/components/Login.vue'
 import Site from '@/components/Site.vue'
@@ -15,18 +15,23 @@ import Projects from '@/components/pages/Projects.vue'
 
 Vue.use(VueRouter);
 
-export const router = new VueRouter({
+const router = new VueRouter({
     routes: [
         { 
             path: '/', 
             name: 'root', 
-            redirect: '/login'
+            redirect: 'app'
         },
-        { path: '/login', component: Login, name: 'login' },
+        { 
+            path: '/login', 
+            component: Login, 
+            name: 'login' 
+        },
         { 
             path: '/app', 
             component: Site, 
             name: 'app',
+            meta: {authenticationNeeded: true},
             children: [
                 {
                     path: '',
@@ -35,24 +40,40 @@ export const router = new VueRouter({
                 {
                     path: 'home',
                     component: Home,
-                    name: 'app.home'
+                    name: 'app.home',
+                    meta: {authenticationNeeded: true},
                 },
                 {
                     path: 'account',
                     component: Account,
-                    name: 'app.account'
+                    name: 'app.account',
+                    meta: {authenticationNeeded: true},
                 },
                 {
                     path: 'wallet',
                     component: Wallet,
-                    name: 'app.wallet'
+                    name: 'app.wallet',
+                    meta: {authenticationNeeded: true},
                 },
                 {
                     path: 'projects',
                     component: Projects,
-                    name: 'app.projects'
+                    name: 'app.projects',
+                    meta: {authenticationNeeded: true},
                 }
             ]
         }
     ]
 });
+
+// A DECOMMENTER EN PROD !!!!
+/* router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.authenticationNeeded && !store.state.isAuthenticated)) {
+        // You can use store variable here to access globalError or commit mutation 
+        next("/Login")
+    } else {
+        next()
+    }
+}); */
+
+export default router;

@@ -21,7 +21,7 @@ export default {
         Navbar
     },
     mounted() {
-        this.$router.push({name: 'app.home'});
+        this.$router.push({name: 'app.account'});
     }
 }
 </script>
@@ -35,5 +35,32 @@ export default {
             "sidenav content";
         grid-template-columns: 200px 1fr;
         grid-template-rows: 50px 1fr;
+
+        .box {
+            margin: 0 0 20px 0;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 20px 0;
+            tbody {
+                tr {
+                    border-bottom: 1px solid #dedede;
+
+                    td {
+                        padding: 5px;
+
+                        &.right {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>

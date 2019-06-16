@@ -32,7 +32,8 @@ logoutview = LogoutView.as_view({
 
 urlpatterns = [
     path('', index.main),
-    path('api/', userviews.users_list),
+    path('api/user/list', userviews.users_list),
+    path('api/user/details', userviews.user_details),
     path('admin/', admin.site.urls),
 
     # Authentication

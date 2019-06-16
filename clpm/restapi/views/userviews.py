@@ -13,3 +13,8 @@ def users_list(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(data=serializer.data)
+
+@api_view(['GET'])
+def user_details(request):
+    serializer = UserSerializer(request.user)
+    return Response(data=serializer.data)

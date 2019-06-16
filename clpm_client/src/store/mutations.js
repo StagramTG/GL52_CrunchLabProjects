@@ -5,5 +5,9 @@ export const mutations = {
 
     clearUsername(state) {
         state.username = '';
+    },
+
+    setIsAuthenticated(state, isAuthenticated) {
+        state.isAuthenticated = isAuthenticated;
     }
 }
