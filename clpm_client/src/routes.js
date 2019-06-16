@@ -29,12 +29,12 @@ const router = new VueRouter({
         },
         { 
             path: '/app', 
-            component: Site, 
-            name: 'app',
+            component: Site,
             meta: {authenticationNeeded: true},
             children: [
                 {
                     path: '',
+                    name: 'app',
                     redirect: 'home'
                 },
                 {
