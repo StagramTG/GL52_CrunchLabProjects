@@ -1,8 +1,7 @@
 <template>
     <div class="content">
-        <h1>Lol t'es connecté !</h1>
-        <p>{{ received }}</p>
-        <button @click="logout()">Déconnexion</button>
+        <Navbar/>
+        <SideNav/>
     </div>
 </template>
 
@@ -11,40 +10,30 @@
 import Cookies from 'js-cookie'
 import axios from '@/services/api'
 
+import SideNav from './elements/SideNav.vue'
+import Navbar from './elements/Navbar.vue'
+
 export default {
     data: function() {
         return {
             received: {}
         }
     },
-
-    mounted: function()
-    {
-        axios.headers = {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': Cookies.get('csrftoken'),
-        }
-
-        console.log(axios.headers);
-
-        let self = this;
-        axios.get('api/').then(function(response) {
-            self.received = response.data;
-        }).catch(function(error) { console.log(error) })
+    components: {
+        SideNav,
+        Navbar
     },
-
-    methods: {
-        logout: function() {
-            console.log("logout");
-            let self = this;
-            axios.post('auth/logout/').then(function(response) {
-                self.$router.push({name: 'login'});
-            }).catch(function(error) { console.log(error.data) })
-        }
-    }
 }
 </script>
 
 <style lang="scss">
-
+    .content {
+        height: 100%;
+        display: grid;
+        grid-template-areas: 
+            "nav nav"
+            "sidenav content";
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: 50px 1fr;
+    }
 </style>
