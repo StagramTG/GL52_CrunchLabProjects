@@ -52,6 +52,8 @@ export default {
                 tr {
                     border-bottom: 1px solid #dedede;
 
+                    &:nth-child(odd) {background: #EEEEEE; }
+
                     td {
                         padding: 5px;
 

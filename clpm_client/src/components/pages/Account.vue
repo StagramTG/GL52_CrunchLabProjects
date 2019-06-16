@@ -10,7 +10,7 @@
             <table class="data-table">
                 <tbody>
                     <tr>
-                        <td>Nom d'utilisateur</td>
+                        <td width="200">Nom d'utilisateur</td>
                         <td>{{ userData.username }}</td>
                     </tr>
                     <tr>
@@ -20,6 +20,14 @@
                     <tr>
                         <td>Nom complet</td>
                         <td>{{ userData.first_name }} {{ userData.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>{{ userData.phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>{{ userData.location }}</td>
                     </tr>
                 </tbody>
             </table>
