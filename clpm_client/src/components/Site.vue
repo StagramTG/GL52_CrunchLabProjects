@@ -8,6 +8,7 @@
 
 <script>
 /* eslint-disable */
+import Cookies from 'js-cookie'
 import axios from '@/services/api'
 
 export default {
@@ -19,6 +20,13 @@ export default {
 
     mounted: function()
     {
+        axios.headers = {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': Cookies.get('csrftoken'),
+        }
+
+        console.log(axios.headers);
+
         let self = this;
         axios.get('api/').then(function(response) {
             self.received = response.data;
@@ -29,9 +37,9 @@ export default {
         logout: function() {
             console.log("logout");
             let self = this;
-            axios.get('api-auth/logout').then(function(response) {
+            axios.post('auth/logout/').then(function(response) {
                 self.$router.push({name: 'login'});
-            }).catch(function(error) { console.log(error) })
+            }).catch(function(error) { console.log(error.data) })
         }
     }
 }

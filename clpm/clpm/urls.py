@@ -19,11 +19,16 @@ from django.urls import path, include
 from restapi.views import index
 from restapi.views import userviews
 
-from restapi.views.authenticate import AuthView
+from restapi.views.authenticate import LoginView, LogoutView
 
-authview = AuthView.as_view({
+loginview = LoginView.as_view({
     'post': 'login'
 })
+
+logoutview = LogoutView.as_view({
+    'post': 'logout'
+})
+
 
 urlpatterns = [
     path('', index.main),
@@ -31,5 +36,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Authentication
-    path('api-auth/login/', authview, name='login'),
+    path('auth/login/', loginview, name='login'),
+    path('auth/logout/', logoutview, name='logout'),
 ]

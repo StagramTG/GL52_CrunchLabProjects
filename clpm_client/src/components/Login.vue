@@ -39,13 +39,14 @@ export default {
     methods: {
         login: function() {
             let self = this;
-            axios.post('api-auth/login/', {
+
+            axios.post('auth/login/', {
                 username: this.username,
                 password: this.password
             })
             .then(function(response) 
             {
-                console.log(response);
+                console.log(response.headers)
                 self.loginSuccess = true;
                 self.$router.push({name: 'app'});
             })
