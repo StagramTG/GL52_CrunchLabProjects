@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from restapi.views import index
-from restapi.views import userviews
+from restapi.views import (
+    index,
+    userviews,
+    projectsviews
+)
 
-from restapi.views.authenticate import LoginView, LogoutView, RegisterView
+from restapi.views.authenticate import (
+    LoginView, 
+    LogoutView, 
+    RegisterView,
+)
 
 loginview = LoginView.as_view({
     'post': 'login'
@@ -43,6 +50,14 @@ urlpatterns = [
     path('api/user/details', userviews.user_details),
     path('api/user/selfupdate', userviews.user_selfupdate),
     path('api/user/<int:id>/update', userviews.user_update),
+
+    # Project api
+    path('api/project/list', projectsviews.project_list),
+    path('api/project/<int:id>/details', projectsviews.project_details),
+    # path('api/project/user/<int:userid>/list', projectsviews.project_user_list),
+    path('api/project/create', projectsviews.project_create),
+    path('api/project/update', projectsviews.project_update),
+    path('api/project/delete', projectsviews.project_delete),
 
     # Admin
     path('admin/', admin.site.urls),
