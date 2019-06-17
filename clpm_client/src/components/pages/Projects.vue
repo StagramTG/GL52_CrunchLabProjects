@@ -1,6 +1,8 @@
 <template>
     <div class="projects">
-        Projets
+        <div class="box">
+            <h3>Projets</h3>
+        </div>
     </div>
 </template>
 
@@ -11,5 +13,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+    .projects {
+        padding: 20px;
+        overflow-y: auto;
+    }
 </style>
