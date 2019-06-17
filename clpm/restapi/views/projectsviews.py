@@ -6,6 +6,11 @@ from ..serializers import ProjectSerializer
 from ..models import Project, User, Account
 
 
+# ==========================================================
+#       PROJECT API
+# ==========================================================
+
+
 @api_view(['GET'])
 def project_details(request, id):
     """ Get details for the given project """
@@ -24,12 +29,6 @@ def project_list(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-@api_view(['GET'])
-def project_user_list(request, userid):
-    """ Get specified user's projects list """
-    pass
 
 
 @api_view(['POST'])
@@ -89,3 +88,32 @@ def project_delete(request):
             return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# ==========================================================
+#       USER PROJECT API
+# ==========================================================
+
+
+@api_view(['GET'])
+def user_project_list(request, userid):
+    """ Get user's projects list """
+    pass
+
+
+@api_view(['GET'])
+def project_user_list(request, projectid):
+    """ Get project's users list """
+    pass
+
+
+@api_view(['POST'])
+def add_user_to_project(request):
+    """ Add user to project's members """
+    pass
+
+
+@api_view(['POST'])
+def delete_user_from_project(request):
+    """ Remove user from project's members """
+    pass
