@@ -43,6 +43,8 @@ urlpatterns = [
     path('api/user/details', userviews.user_details),
     path('api/user/selfupdate', userviews.user_selfupdate),
     path('api/user/<int:id>/update', userviews.user_update),
+    path('api/user/<int:id>/info', userviews.user_info),
+    path('api/user/<int:id>/delete', userviews.user_delete),
 
     # Admin
     path('admin/', admin.site.urls),

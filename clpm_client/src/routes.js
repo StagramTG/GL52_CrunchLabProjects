@@ -18,6 +18,7 @@ import AccountUpdate from '@/components/pages/AccountUpdate.vue'
 import AdminHome from '@/components/pages/AdminHome.vue'
 import AdminUserList from '@/components/pages/adminusers/AdminUserList.vue'
 import AdminUserCreation from '@/components/pages/adminusers/AdminUserCreation.vue'
+import AdminUserModification from '@/components/pages/adminusers/AdminUserModification.vue'
 
 Vue.use(VueRouter);
 
@@ -91,6 +92,12 @@ const router = new VueRouter({
                     path: 'admin/users/create',
                     component: AdminUserCreation,
                     name: 'app.admin.users.create',
+                    meta: {authenticationNeeded: true, adminOnly: true}
+                },
+                {
+                    path: 'admin/users/modify',
+                    component : AdminUserModification,
+                    name: 'app.admin.users.modify',
                     meta: {authenticationNeeded: true, adminOnly: true}
                 }
             ]
