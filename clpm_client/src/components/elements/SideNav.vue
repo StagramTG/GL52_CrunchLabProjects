@@ -5,13 +5,20 @@
             <li><router-link to="/app/account">Compte</router-link></li>
             <li><router-link to="/app/wallet">Portefeuille</router-link></li>
             <li><router-link to="/app/projects">Projets</router-link></li>
+            <div v-if="is_admin">
+                <li><router-link to="/app/admin">Administration</router-link></li>
+            </div>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-    
+    computed: {
+        is_admin() {
+            return this.$store.state.userData.is_admin;
+        }
+    }
 }
 </script>
 

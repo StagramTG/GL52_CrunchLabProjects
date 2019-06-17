@@ -15,6 +15,8 @@ import Projects from '@/components/pages/Projects.vue'
 
 import AccountUpdate from '@/components/pages/AccountUpdate.vue'
 
+import AdminHome from '@/components/pages/AdminHome.vue'
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -68,13 +70,21 @@ const router = new VueRouter({
                     component: Projects,
                     name: 'app.projects',
                     meta: {authenticationNeeded: true},
+                },
+
+                /** ADMINISTRATION ROUTES */
+                {
+                    path: 'admin',
+                    component: AdminHome,
+                    name: 'app.admin',
+                    meta: {authenticationNeeded: true, adminOnly: true}
                 }
             ]
         }
     ]
 });
 
-// A DECOMMENTER EN PROD !!!!
+// A DECOMMENTER EN PROD !!!! --> Ajouter une directive pour la partie admin !!!!
 /* router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.authenticationNeeded && !store.state.isAuthenticated)) {
         // You can use store variable here to access globalError or commit mutation 
