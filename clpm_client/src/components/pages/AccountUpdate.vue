@@ -4,6 +4,11 @@
             <h3>Modifier vos informations</h3>
 
             <div class="form-field">
+                <span class="label">Nom d'utilisateur</span>
+                <input type="text" v-model="username">
+            </div>
+
+            <div class="form-field">
                 <span class="label">Nom</span>
                 <input type="text" v-model="last_name">
             </div>
@@ -29,7 +34,7 @@
             </div>
 
             <div class="right">
-                <a href="" class="button danger">Enregistrer</a>
+                <a href="" class="button danger" @click.prevent="updateUserData()">Enregistrer</a>
             </div>
         </div>
     </div>
@@ -41,6 +46,7 @@ import axios from '../../services/api'
 export default {
     data() {
         return {
+            username: '',
             last_name: '',
             first_name: '',
             email: '',
@@ -51,6 +57,7 @@ export default {
     },
 
     mounted() {
+        this.username = this.$store.state.userData.username;
         this.last_name = this.$store.state.userData.last_name;
         this.first_name = this.$store.state.userData.first_name;
         this.email = this.$store.state.userData.email;
@@ -61,6 +68,17 @@ export default {
     methods: {
         updateUserData() {
             let self = this;
+            axios.post('api/user/selfupdate', {
+                username: self.username,
+                email: self.email,
+                first_name: self.first_name,
+                last_name: self.last_name,
+                phone: self.phone,
+                location: self.location
+            })
+            .then(function(response) {
+                self.$router.push({name: 'app.account'});
+            });
         }
     }
 }

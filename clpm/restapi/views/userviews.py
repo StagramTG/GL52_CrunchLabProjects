@@ -32,7 +32,7 @@ def user_selfupdate(request):
     phone = request.data['phone']
     location = request.data['location']
 
-    if email & first_name & last_name:
+    if email and first_name and last_name:
         # Update
         user = request.user
         user.username = username
@@ -43,7 +43,7 @@ def user_selfupdate(request):
         user.location = location
 
         user.save()
-
+        return Response({}, status=status.HTTP_200_OK)
     else:
         # No update + return code 400
         return Response({}, status=status.HTTP_400_BAD_REQUEST)

@@ -35,9 +35,15 @@ registerview = RegisterView.as_view({
 
 
 urlpatterns = [
+    # Main page
     path('', index.main),
+
+    # User api
     path('api/user/list', userviews.users_list),
     path('api/user/details', userviews.user_details),
+    path('api/user/selfupdate', userviews.user_selfupdate),
+
+    # Admin
     path('admin/', admin.site.urls),
 
     # Authentication

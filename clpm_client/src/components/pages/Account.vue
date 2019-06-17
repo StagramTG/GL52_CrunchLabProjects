@@ -23,11 +23,11 @@
                     </tr>
                     <tr>
                         <td>Téléphone</td>
-                        <td>{{ $store.state.userData.phone }}</td>
+                        <td>{{ phone }}</td>
                     </tr>
                     <tr>
                         <td>Adresse</td>
-                        <td>{{ userData.location }}</td>
+                        <td>{{ location }}</td>
                     </tr>
                 </tbody>
             </table>
