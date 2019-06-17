@@ -22,3 +22,21 @@ def project_list(request):
 def project_user_list(request, userid):
     """ Get specified user's projects list """
     pass
+
+
+@api_view(['POST'])
+def project_create(request):
+    """ Create a new project from post data """
+    pass
+
+
+@api_view(['POST'])
+def project_update(request):
+    """ Update a project from post data """
+    pass
+
+
+@api_view(['POST'])
+def project_delete(request):
+    """ Delete a project from post data """
+    pass
