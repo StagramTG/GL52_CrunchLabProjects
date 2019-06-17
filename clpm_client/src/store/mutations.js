@@ -1,10 +1,10 @@
 export const mutations = {
-    setUsername(state, username) {
-        state.username = username;
+    setUserData(state, userData) {
+        state.userData = userData;
     },
 
-    clearUsername(state) {
-        state.username = '';
+    clearUserData(state) {
+        state.userData = {};
     },
 
     setIsAuthenticated(state, isAuthenticated) {

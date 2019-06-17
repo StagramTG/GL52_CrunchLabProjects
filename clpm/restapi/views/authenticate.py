@@ -25,7 +25,8 @@ class LoginView(viewsets.ViewSet):
         if user:
             # success
             login(request, user)
-            response = Response({'username': user.username}, status=status.HTTP_200_OK)
+            serializer = UserSerializer(user)
+            response = Response(serializer.data, status=status.HTTP_200_OK)
             return response
         else:
             # failure

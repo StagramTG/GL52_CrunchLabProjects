@@ -19,6 +19,7 @@ export default {
             axios.post('auth/logout/')
                 .then(function(response) {
                     console.log("qdzdqzd");
+                    self.$store.commit('clearUserData', false);
                     self.$store.commit('setIsAuthenticated', false);
                     self.$router.push({path: '/login'});
                 })
@@ -29,7 +30,7 @@ export default {
     },
     computed: {
         username() {
-            return this.$store.state.username;
+            return this.$store.state.userData.username;
         }
     }
 }

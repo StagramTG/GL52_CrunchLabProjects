@@ -1,7 +1,7 @@
 <template>
     <div class="account">
         <div class="header box">
-            <span class="account-name">{{ userData.first_name }} {{ userData.last_name }} <small>({{ userData.username }})</small> </span><br>
+            <span class="account-name">{{ first_name }} {{ last_name }} <small>({{ username }})</small> </span><br>
             Information sur votre compte
         </div>
 
@@ -11,19 +11,19 @@
                 <tbody>
                     <tr>
                         <td width="200">Nom d'utilisateur</td>
-                        <td>{{ userData.username }}</td>
+                        <td>{{ username }}</td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td>{{ userData.email }}</td>
+                        <td>{{ email }}</td>
                     </tr>
                     <tr>
                         <td>Nom complet</td>
-                        <td>{{ userData.first_name }} {{ userData.last_name }}</td>
+                        <td>{{ first_name }} {{ last_name }}</td>
                     </tr>
                     <tr>
                         <td>Téléphone</td>
-                        <td>{{ userData.phone }}</td>
+                        <td>{{ $store.state.userData.phone }}</td>
                     </tr>
                     <tr>
                         <td>Adresse</td>
@@ -32,7 +32,9 @@
                 </tbody>
             </table>
 
-            <router-link :to="{name: 'app.account.update'}" class="button danger">Modifier</router-link>
+            <div class="right">
+                <router-link :to="{name: 'app.account.update'}" class="button danger">Modifier</router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -49,14 +51,38 @@ export default {
     },
     computed: {
         username() {
-            return this.$store.state.username;
-        }
+            return this.$store.state.userData.username;
+        },
+
+        first_name() {
+            return this.$store.state.userData.first_name;
+        },
+
+        last_name() {
+            return this.$store.state.userData.last_name;
+        },
+
+        email() {
+            return this.$store.state.userData.email;
+        },
+
+        phone() {
+            return this.$store.state.userData.phone;
+        },
+
+        location() {
+            return this.$store.state.userData.location;
+        },
+
+        is_admin() {
+            return this.$store.state.userData.is_admin;
+        },
     },
     mounted() {
         let self = this;
         axios.get('api/user/details')
             .then(function(response) {
-                self.userData = response.data;
+                self.$store.commit('setUserData', response.data);
             })
     }
 }

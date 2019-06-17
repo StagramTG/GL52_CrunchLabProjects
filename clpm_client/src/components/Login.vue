@@ -7,17 +7,18 @@
 
             <div class="form">
                 <div class="form-field">
-                    <span>Email</span>
-                    <input type="email" name="username" placeholder="ex: example@example.fr" v-model="username">
+                    <span class="label">Email</span>
+                    <input type="email" name="username" placeholder="ex: example@example.fr" v-model="username" @keyup.enter="login()">
                 </div>
 
                 <div class="form-field">
-                    <span>Mot de passe</span>
-                    <input type="password" name="password" placeholder="************" v-model="password">
+                    <span class="label">Mot de passe</span>
+                    <input type="password" name="password" placeholder="************" v-model="password" @keyup.enter="login()">
                 </div>
 
-                <br>
-                <input type="button" value="Se connecter" @click="login()">
+                <div class="center">
+                    <a href="" class="button success" @click.prevent="login()">Se connecter</a>
+                </div>
             </div>
 
         </div>
@@ -48,7 +49,7 @@ export default {
             {
                 console.log(response.headers)
                 self.loginSuccess = true;
-                self.$store.commit('setUsername', response.data.username);
+                self.$store.commit('setUserData', response.data);
                 self.$store.commit('setIsAuthenticated', true);
                 self.$router.push({name: 'app'});
             })
@@ -86,57 +87,6 @@ export default {
                 small 
                 {
                     font-size: 35%;
-                }
-            }
-
-            .form
-            {
-                display: flex;
-                flex-direction: column;
-
-                .form-field
-                {
-                    display: flex;
-                    flex-direction: column;
-                    margin: 0 0 20px 0;
-
-                    span
-                    {
-                        margin: 0 0 5px 0;
-                    }
-
-                    input
-                    {
-                        height: 33px;
-                        padding: 0 10px 0 10px;
-
-                        border: none;
-                        border-radius: 5px;
-
-                        background-color: #EEEEEE;
-                        outline: none;
-                    }
-                }
-
-                input[type=button]
-                {
-                    display: block;
-                    margin: auto;
-                    width: 50%;
-                    height: 33px;
-
-                    border: none;
-                    border-radius: 5px;
-                    outline: none;
-                    cursor: pointer;
-
-                    background-color: #029060;
-                    color: white;
-
-                    &:hover
-                    {
-                        background-color: #03b65a;
-                    }
                 }
             }
         }

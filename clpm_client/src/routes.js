@@ -78,9 +78,9 @@ const router = new VueRouter({
 /* router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.authenticationNeeded && !store.state.isAuthenticated)) {
         // You can use store variable here to access globalError or commit mutation 
-        next("/Login")
+        next("/Login");
     } else {
-        next()
+        next();
     }
 }); */
 
