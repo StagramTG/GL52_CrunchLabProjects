@@ -43,7 +43,7 @@ def user_selfupdate(request):
         user.location = location
 
         user.save()
-        
+
     else:
         # No update + return code 400
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
