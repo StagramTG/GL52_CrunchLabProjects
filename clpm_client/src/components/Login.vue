@@ -53,10 +53,6 @@ export default {
                 self.$store.commit('setIsAuthenticated', true);
                 self.$router.push({name: 'app'});
             })
-            .catch(function(error) 
-            { 
-                console.log(error); 
-            })
         }
     }
 }
