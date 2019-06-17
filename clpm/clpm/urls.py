@@ -42,6 +42,7 @@ urlpatterns = [
     path('api/user/list', userviews.users_list),
     path('api/user/details', userviews.user_details),
     path('api/user/selfupdate', userviews.user_selfupdate),
+    path('api/user/<int:id>/update', userviews.user_update),
 
     # Admin
     path('admin/', admin.site.urls),

@@ -47,3 +47,30 @@ def user_selfupdate(request):
     else:
         # No update + return code 400
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def user_update(request, id):
+    """ Update himself, use another method to update others """
+    username = request.data['username']
+    email = request.data['email']
+    first_name = request.data['first_name']
+    last_name = request.data['last_name']
+    phone = request.data['phone']
+    location = request.data['location']
+
+    if email and first_name and last_name:
+        # Update
+        user = User.objects.get(pk=id)
+        if user:
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+            user.phone = phone
+            user.location = location
+
+            user.save()
+            return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
