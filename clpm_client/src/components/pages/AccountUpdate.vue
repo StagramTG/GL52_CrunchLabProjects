@@ -34,7 +34,7 @@
             </div>
 
             <div class="right">
-                <router-link to="/app/account" class="button primary">Retour</router-link> &nbsp&nbsp
+                <router-link to="/app/account" class="button primary">Retour</router-link> &nbsp;&nbsp;
                 <a href="" class="button danger" @click.prevent="updateUserData()">Enregistrer</a>
             </div>
         </div>
@@ -42,6 +42,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from '../../services/api'
 
 export default {

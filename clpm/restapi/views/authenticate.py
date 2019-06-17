@@ -49,7 +49,6 @@ class LogoutView(viewsets.ViewSet):
 class RegisterView(viewsets.ViewSet):
     serializer_class = UserSerializer
     authentication_classes = (SessionAuthentication,)
-    permission_classes = (permissions.IsAuthenticated)
 
     def register(self, request, *args, **kwargs):
         email = request.data['email']
@@ -57,7 +56,7 @@ class RegisterView(viewsets.ViewSet):
         last_name = request.data['last_name']
         password = request.data['password']
         
-        if email & password:
+        if email and password:
             # Create new user
             user = User.objects.create_user(
                 username=first_name[0]+last_name, 
@@ -69,7 +68,8 @@ class RegisterView(viewsets.ViewSet):
 
             # Create user's wallet
             wallet = Account()
-            wallet.name = wallet.id + '_' + first_name + '_' + last_name + '_ACCOUNT'
+            wallet.balance = 0;
+            wallet.name = first_name + '_' + last_name + '_ACCOUNT'
             wallet.save()
             user.account_id = wallet
 

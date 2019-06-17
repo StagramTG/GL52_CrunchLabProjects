@@ -114,7 +114,7 @@ export default {
                 margin: 0 0 5px 0;
             }
 
-            input {
+            input[type='text'], input[type='password'], input[type='email'] {
                 height: 33px;
                 padding: 0 10px 0 10px;
 
@@ -123,7 +123,36 @@ export default {
 
                 background-color: #EEEEEE;
                 outline: none;
+
+                &.error {
+                    border: 1px solid #d64937;
+                }
+
+                &.valide {
+                    border: 1px solid #00A86B;
+                }
             }
+        }
+
+        .message {
+            margin: 0 0 20px 0;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
+            &.danger {
+                background-color: #d64937;
+                color: white;
+            }
+
+            &.success {
+                background-color: #00A86B;
+                color: white;
+            }
+        }
+
+        .invisible {
+            display: none;
         }
     }
 </style>
