@@ -47,6 +47,12 @@ export default {
             justify-content: flex-end;
         }
 
+        .space-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .button {
             display: inline-block;
             height: 33px;
@@ -87,6 +93,15 @@ export default {
                     color: #EEEEEE;
                     background-color:#d64937;
                 }
+            }
+        }
+
+        .link {
+            text-decoration: none;
+            color: #2d2d2d;
+
+            &:hover {
+                text-decoration: underline;
             }
         }
 

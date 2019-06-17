@@ -1,6 +1,15 @@
 <template>
     <div class="admin-home">
-        admin home
+        <div class="box">
+            <h3>Administration</h3>
+            <table class="data-table">
+                <tbody>
+                    <tr>
+                        <td><router-link to="/app/admin/users">Gestion des utilisateurs</router-link></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -12,6 +21,7 @@ export default {
 
 <style lang="scss">
     .admin-home {
-        
+        padding: 20px;
+        overflow-y: auto;
     }
 </style>

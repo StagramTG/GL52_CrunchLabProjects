@@ -34,6 +34,7 @@
             </div>
 
             <div class="right">
+                <router-link to="/app/account" class="button primary">Retour</router-link> &nbsp&nbsp
                 <a href="" class="button danger" @click.prevent="updateUserData()">Enregistrer</a>
             </div>
         </div>

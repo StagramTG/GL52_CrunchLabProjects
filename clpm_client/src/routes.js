@@ -16,6 +16,7 @@ import Projects from '@/components/pages/Projects.vue'
 import AccountUpdate from '@/components/pages/AccountUpdate.vue'
 
 import AdminHome from '@/components/pages/AdminHome.vue'
+import AdminUserList from '@/components/pages/adminusers/AdminUserList.vue'
 
 Vue.use(VueRouter);
 
@@ -77,6 +78,12 @@ const router = new VueRouter({
                     path: 'admin',
                     component: AdminHome,
                     name: 'app.admin',
+                    meta: {authenticationNeeded: true, adminOnly: true}
+                },
+                {
+                    path: 'admin/users',
+                    component: AdminUserList,
+                    name: 'app.admin.users',
                     meta: {authenticationNeeded: true, adminOnly: true}
                 }
             ]
