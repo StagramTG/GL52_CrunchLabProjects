@@ -21,6 +21,7 @@ import AdminUserCreation from '@/components/pages/adminusers/AdminUserCreation.v
 import AdminUserModification from '@/components/pages/adminusers/AdminUserModification.vue'
 
 import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
+import AdminRolesCreate from '@/components/pages/adminroles/AdminRolesCreate.vue'
 
 Vue.use(VueRouter);
 
@@ -105,6 +106,12 @@ const router = new VueRouter({
                     component : AdminUserModification,
                     name: 'app.admin.users.modify',
                     meta: {authenticationNeeded: true, adminOnly: true}
+                },
+                {
+                    path: 'admin/roles/create',
+                    component: AdminRolesCreate,
+                    name: 'app.admin.roles.create',
+                    meta: { authenticationNeeded: true, adminOnly: true }
                 }
             ]
         }

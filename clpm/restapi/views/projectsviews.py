@@ -98,7 +98,7 @@ def project_delete(request):
 @api_view(['GET'])
 def projectrole_list(request):
     roles = ProjectRoles.objects.all()
-    serializer = ProjectRolesSerializer(roles)
+    serializer = ProjectRolesSerializer(roles, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 

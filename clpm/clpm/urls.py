@@ -61,7 +61,7 @@ urlpatterns = [
     path('api/project/delete', projectsviews.project_delete),
 
     # Project roles api
-    path('api/project/role/list', projectsviews.projectrole_create),
+    path('api/project/role/list', projectsviews.projectrole_list),
     path('api/project/role/create', projectsviews.projectrole_create),
     path('api/project/role/delete', projectsviews.projectrole_delete),
 
