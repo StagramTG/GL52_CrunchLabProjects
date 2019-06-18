@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from ..serializers import AccountSerializer
 from ..models import User, Account
 
+
 @api_view(['GET'])
 def account_details(request, id):
     """ Get account details for the given user"""
