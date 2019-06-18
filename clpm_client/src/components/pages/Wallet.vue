@@ -1,6 +1,8 @@
 <template>
     <div class="wallet">
-        portefeuille
+        <div class="box">
+            <h3>Portefeuille</h3>
+        </div>
     </div>
 </template>
 
@@ -11,5 +13,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+    .wallet {
+        padding: 20px;
+        overflow-y: auto;
+    }
 </style>
