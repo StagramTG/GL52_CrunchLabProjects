@@ -3,8 +3,8 @@
         <div class="box">
             <h3>Portefeuille</h3>
             <div class="amount box">
-                <h4>Montant restant sur le compte : {{this.userData.balance}} €</h4>
-                <a href="" class="button success">Ajouter des fonds</a>
+                <h4>Solde : {{this.userData.balance}} €</h4>
+                <router-link :to="{name : 'app.supply', params: {id: userData.id}}" class="button success">Ajouter des fonds</router-link>
             </div>
         </div>
     </div>

@@ -16,3 +16,21 @@ def account_details(request, id):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def account_supply(request):
+    """ Update balance for the given user"""
+
+    id = request.data['id']
+    balance = float(request.data['amount'])
+
+    account = Account.objects.get(id=id)
+
+    if account:
+        account.balance += balance
+
+        account.save()
+        return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)

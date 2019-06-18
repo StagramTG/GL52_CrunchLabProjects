@@ -68,6 +68,7 @@ urlpatterns = [
 
     #Account api
     path('api/account/<int:id>/details', walletviews.account_details),
+    path('api/account/supply', walletviews.account_supply),
 
     # Admin
     path('admin/', admin.site.urls),
