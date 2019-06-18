@@ -5,10 +5,10 @@
             <table class="data-table">
                 <tbody>
                     <tr>
-                        <td><router-link to="/app/admin/users">Gestion des utilisateurs</router-link></td>
+                        <td><router-link to="/app/admin/users" class="link">Gestion des utilisateurs</router-link></td>
                     </tr>
                     <tr>
-                        <td><router-link to="/app/admin/roles">Gestion des rôles pour les projets</router-link></td>
+                        <td><router-link to="/app/admin/roles" class="link">Gestion des rôles pour les projets</router-link></td>
                     </tr>
                 </tbody>
             </table>

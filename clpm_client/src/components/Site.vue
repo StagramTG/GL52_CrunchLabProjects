@@ -21,7 +21,7 @@ export default {
         Navbar
     },
     mounted() {
-        this.$router.push({name: 'app.admin.roles'});
+        this.$router.push({name: 'app.projects'});
     }
 }
 </script>
