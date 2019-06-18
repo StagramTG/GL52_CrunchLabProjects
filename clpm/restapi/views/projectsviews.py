@@ -2,8 +2,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 
-from ..serializers import ProjectSerializer
-from ..models import Project, User, Account
+from ..serializers import ProjectSerializer, ProjectRolesSerializer
+from ..models import Project, User, Account, ProjectRoles
 
 
 # ==========================================================
@@ -97,20 +97,34 @@ def project_delete(request):
 
 @api_view(['GET'])
 def projectrole_list(request):
-    """ Get all existing project's roles """
-    pass
+    roles = ProjectRoles.objects.all()
+    serializer = ProjectRolesSerializer(roles)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
 def projectrole_create(request):
-    """ Create a new project's role """
-    pass
+    name = request.data['name']
+    if name:
+        role = ProjectRoles()
+        role.name = name
+        role.save()
+
+        return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 def projectrole_delete(request):
-    """ Delete a role """
-    pass
+    id = request.data['id']
+    if id:
+        role = ProjectRoles.objects.get(id=id)
+        if role:
+            role.delete()
+            return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # ==========================================================
