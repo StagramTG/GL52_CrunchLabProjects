@@ -20,6 +20,7 @@ import AdminUserList from '@/components/pages/adminusers/AdminUserList.vue'
 import AdminUserCreation from '@/components/pages/adminusers/AdminUserCreation.vue'
 
 import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
+import AdminRolesCreate from '@/components/pages/adminroles/AdminRolesCreate.vue'
 
 Vue.use(VueRouter);
 
@@ -97,6 +98,12 @@ const router = new VueRouter({
                     path: 'admin/roles',
                     component: AdminRolesHome,
                     name: 'app.admin.roles',
+                    meta: { authenticationNeeded: true, adminOnly: true }
+                },
+                {
+                    path: 'admin/roles/create',
+                    component: AdminRolesCreate,
+                    name: 'app.admin.roles.create',
                     meta: { authenticationNeeded: true, adminOnly: true }
                 }
             ]
