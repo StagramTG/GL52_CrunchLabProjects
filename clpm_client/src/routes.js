@@ -19,26 +19,26 @@ import AdminHome from '@/components/pages/AdminHome.vue'
 import AdminUserList from '@/components/pages/adminusers/AdminUserList.vue'
 import AdminUserCreation from '@/components/pages/adminusers/AdminUserCreation.vue'
 
+import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: [
-        { 
-            path: '/', 
-            name: 'root', 
+    routes: [{
+            path: '/',
+            name: 'root',
             redirect: 'app'
         },
-        { 
-            path: '/login', 
-            component: Login, 
-            name: 'login' 
+        {
+            path: '/login',
+            component: Login,
+            name: 'login'
         },
-        { 
-            path: '/app', 
+        {
+            path: '/app',
             component: Site,
-            meta: {authenticationNeeded: true},
-            children: [
-                {
+            meta: { authenticationNeeded: true },
+            children: [{
                     path: '',
                     name: 'app',
                     redirect: 'home'
@@ -47,31 +47,31 @@ const router = new VueRouter({
                     path: 'home',
                     component: Home,
                     name: 'app.home',
-                    meta: {authenticationNeeded: true},
+                    meta: { authenticationNeeded: true },
                 },
                 {
                     path: 'account',
                     component: Account,
                     name: 'app.account',
-                    meta: {authenticationNeeded: true},
+                    meta: { authenticationNeeded: true },
                 },
                 {
                     path: 'account/update',
                     component: AccountUpdate,
                     name: 'app.account.update',
-                    meta: {authenticationNeeded: true},
+                    meta: { authenticationNeeded: true },
                 },
                 {
                     path: 'wallet',
                     component: Wallet,
                     name: 'app.wallet',
-                    meta: {authenticationNeeded: true},
+                    meta: { authenticationNeeded: true },
                 },
                 {
                     path: 'projects',
                     component: Projects,
                     name: 'app.projects',
-                    meta: {authenticationNeeded: true},
+                    meta: { authenticationNeeded: true },
                 },
 
                 /** ADMINISTRATION ROUTES */
@@ -79,19 +79,25 @@ const router = new VueRouter({
                     path: 'admin',
                     component: AdminHome,
                     name: 'app.admin',
-                    meta: {authenticationNeeded: true, adminOnly: true}
+                    meta: { authenticationNeeded: true, adminOnly: true }
                 },
                 {
                     path: 'admin/users',
                     component: AdminUserList,
                     name: 'app.admin.users',
-                    meta: {authenticationNeeded: true, adminOnly: true}
+                    meta: { authenticationNeeded: true, adminOnly: true }
                 },
                 {
                     path: 'admin/users/create',
                     component: AdminUserCreation,
                     name: 'app.admin.users.create',
-                    meta: {authenticationNeeded: true, adminOnly: true}
+                    meta: { authenticationNeeded: true, adminOnly: true }
+                },
+                {
+                    path: 'admin/roles',
+                    component: AdminRolesHome,
+                    name: 'app.admin.roles',
+                    meta: { authenticationNeeded: true, adminOnly: true }
                 }
             ]
         }

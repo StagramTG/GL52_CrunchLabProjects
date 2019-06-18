@@ -7,6 +7,9 @@
                     <tr>
                         <td><router-link to="/app/admin/users">Gestion des utilisateurs</router-link></td>
                     </tr>
+                    <tr>
+                        <td><router-link to="/app/admin/roles">Gestion des rôles pour les projets</router-link></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
