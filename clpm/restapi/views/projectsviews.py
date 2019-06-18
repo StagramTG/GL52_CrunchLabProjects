@@ -91,6 +91,29 @@ def project_delete(request):
 
 
 # ==========================================================
+#       PROJECT ROLES API
+# ==========================================================
+
+
+@api_view(['GET'])
+def projectrole_list(request):
+    """ Get all existing project's roles """
+    pass
+
+
+@api_view(['POST'])
+def projectrole_create(request):
+    """ Create a new project's role """
+    pass
+
+
+@api_view(['POST'])
+def projectrole_delete(request):
+    """ Delete a role """
+    pass
+
+
+# ==========================================================
 #       USER PROJECT API
 # ==========================================================
 

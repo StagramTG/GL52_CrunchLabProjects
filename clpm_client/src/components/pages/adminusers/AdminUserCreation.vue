@@ -49,6 +49,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from '@/services/api'
 
 export default {

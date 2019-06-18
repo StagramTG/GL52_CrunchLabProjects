@@ -4,7 +4,7 @@
             <div class="space-between">
                 <h3>Utilisateurs</h3>
                 <div>
-                    <router-link to="/app/admin/users/create" class="button success">+ Créer</router-link> &nbsp
+                    <router-link to="/app/admin/users/create" class="button success">+ Créer</router-link> &nbsp;
                     <router-link to="/app/admin" class="button primary">Retour</router-link>
                 </div>
             </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import axios from '@/services/api'
 
 export default {
