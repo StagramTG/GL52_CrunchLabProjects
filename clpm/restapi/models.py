@@ -81,8 +81,8 @@ class ProjectRoles(models.Model):
 Class UserProject
 """
 class UserProject(models.Model):
-    user_id    = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    project_id = models.ForeignKey(to=Project, on_delete=models.CASCADE)
+    user_id    = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='projects')
+    project_id = models.ForeignKey(to=Project, on_delete=models.CASCADE, related_name='users')
     user_role  = models.ForeignKey(to=ProjectRoles, on_delete=models.CASCADE, blank=True, null=True)
 
 

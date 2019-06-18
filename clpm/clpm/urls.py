@@ -65,6 +65,13 @@ urlpatterns = [
     path('api/project/role/create', projectsviews.projectrole_create),
     path('api/project/role/delete', projectsviews.projectrole_delete),
 
+    # Project User api
+    path('api/user/<int:userid>/projects', projectsviews.user_project_list),
+    path('api/project/<int:projectid>/users', projectsviews.project_user_list),
+    path('api/project/<int:projectid>/users', projectsviews.project_user_list),
+    path('api/project/adduser', projectsviews.add_user_to_project),
+    path('api/project/deleteuser', projectsviews.delete_user_from_project),
+
     # Admin
     path('admin/', admin.site.urls),
 

@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 
 from ..serializers import ProjectSerializer, ProjectRolesSerializer
-from ..models import Project, User, Account, ProjectRoles
+from ..models import Project, User, Account, ProjectRoles, UserProject
 
 
 # ==========================================================
@@ -134,8 +134,16 @@ def projectrole_delete(request):
 
 @api_view(['GET'])
 def user_project_list(request, userid):
-    """ Get user's projects list """
-    pass
+    user = User.objects.filter(id=userid)[0]
+    if user:
+        userprojects = user.projects.all()
+        projects = set()
+        for up in userprojects:
+            projects.add(up.project_id)
+
+        return Response(ProjectSerializer(projects, many=True).data, status=status.HTTP_200_OK)
+    
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
