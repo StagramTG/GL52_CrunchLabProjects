@@ -13,7 +13,7 @@
                 <tbody>
                     <tr v-for="user in userList" :key="user.id">
                         <td>{{ user.first_name + ' ' + user.last_name + ' (' + user.username + ')' }}</td>
-                        <td style="text-align: right"><a href="" class="link">Modifier</a></td>
+                        <td style="text-align: right"><router-link :to="{name : 'app.admin.users.modify', params: {id: user.id}}">Modifier</router-link></td>
                     </tr>
                 </tbody>
             </table>

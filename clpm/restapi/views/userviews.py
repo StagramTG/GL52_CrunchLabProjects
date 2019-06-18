@@ -74,3 +74,17 @@ def user_update(request, id):
             return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def user_info(request, id):
+    user = User.objects.filter(pk=id)
+    serializer = UserSerializer(user, many=True)
+    return Response(data=serializer.data[0])
+
+
+@api_view(['POST'])
+def user_delete(request, id):
+    user = User.objects.get(pk=id)
+    user.delete()
+    return Response({}, status=status.HTTP_200_OK)
