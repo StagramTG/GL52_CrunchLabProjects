@@ -13,6 +13,9 @@
                 <tbody>
                     <tr v-for="project in userProjects" :key="project.id">
                         <td>{{ project.name }}</td>
+                        <td style="text-align: right">
+                            <router-link :to="{ name: 'app.projects.details', params: { id: project.id } }" class="link">Détails</router-link>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -36,7 +39,7 @@ export default {
             .then(function(response) {
                 self.userProjects = response.data;
             });
-    }
+    },
 }
 </script>
 
