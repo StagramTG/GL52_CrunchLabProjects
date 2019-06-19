@@ -16,6 +16,10 @@
                 <span>Veuillez entrer un CCV valide :</span>
             </div>
 
+            <div class="message danger invisible" id="invalid-amount-msg">
+                <span>Veuillez entrer un montant valide :</span>
+            </div>
+
             <div class="form-field">
                 <span class="label">Numéro de carte :</span>
                 <input type="text" v-model="number" id="card-number">
@@ -79,6 +83,15 @@ export default {
             else {
                 document.querySelector('#invalid-ccv-msg').classList.add('invisible');
             }
+
+            if(!(/^[0-9]+(\.[0-9]{1,2})?$/.test(this.amount))) {
+                document.querySelector('#invalid-amount-msg').classList.remove('invisible');
+                dataAreValide = false;
+            }
+            else {
+                document.querySelector('#invalid-amount-msg').classList.add('invisible');
+            }
+
 
             if (this.owner === "" || this.date === "") {
                 document.querySelector('#invalid-empty-msg').classList.remove('invisible');
