@@ -11,7 +11,9 @@ import Site from '@/components/Site.vue'
 import Home from '@/components/pages/Home.vue'
 import Account from '@/components/pages/Account.vue'
 import Wallet from '@/components/pages/Wallet.vue'
+
 import Projects from '@/components/pages/Projects.vue'
+import ProjectCreation from '@/components/pages/ProjectCreation.vue'
 
 import AccountUpdate from '@/components/pages/AccountUpdate.vue'
 
@@ -67,6 +69,14 @@ const router = new VueRouter({
                     path: 'wallet',
                     component: Wallet,
                     name: 'app.wallet',
+                    meta: { authenticationNeeded: true },
+                },
+
+                /** PROJECT ROUTES */
+                {
+                    path: 'projects/create',
+                    component: ProjectCreation,
+                    name: 'app.projects.create',
                     meta: { authenticationNeeded: true },
                 },
                 {
