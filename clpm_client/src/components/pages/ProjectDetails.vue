@@ -7,8 +7,22 @@
 </template>
 
 <script>
+import axios from '@/services/api'
+
 export default {
-    
+    data() {
+        return {
+            projectDetails: {}
+        }
+    },
+
+    mounted() {
+        let self = this;
+        axios.get('api/project/' + self.$route.params.id + '/details')
+            .then(function(response) {
+                self.projectDetails = response.data;
+            });
+    }
 }
 </script>
 
