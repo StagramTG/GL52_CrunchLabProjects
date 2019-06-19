@@ -29,8 +29,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    timezone = serializers.SerializerMethodField()
-
     class Meta:
         model = models.Project
         fields = (

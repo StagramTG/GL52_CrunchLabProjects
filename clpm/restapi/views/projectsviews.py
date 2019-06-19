@@ -45,7 +45,7 @@ def project_create(request):
 
         account = Account()
         account.balance = 0
-        account.name = name + '_' + request.user.username + '_ACCOUNT'
+        account.name = name.replace(' ', '_') + '_' + request.user.username + '_ACCOUNT'
         account.save()
 
         project.account_id = account
@@ -55,7 +55,10 @@ def project_create(request):
         userproject = UserProject()
         userproject.user_id = request.user
         userproject.project_id = project
-        userproject.user_role = UserProject.objects.get_or_create(name='Créateur')
+        role, res = ProjectRoles.objects.get_or_create(name='Créateur')
+        userproject.user_role = role
+        
+        userproject.save()
 
         return Response({}, status=status.HTTP_200_OK)
 

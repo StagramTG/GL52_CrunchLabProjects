@@ -11,12 +11,12 @@
 
             <div class="form-field">
                 <span class="label">Description</span>
-                <textarea id="" rows="4"></textarea>
+                <textarea id="" rows="4" v-model="description"></textarea>
             </div>
 
             <div class="right">
                 <router-link to="/app/projects" class="button primary">Retour</router-link> &nbsp;
-                <a href="" class="button success">Enregistrer</a>
+                <a href="" class="button success" @click.prevent="create()">Enregistrer</a>
             </div>
         </div>
     </div>
@@ -36,6 +36,12 @@ export default {
     methods: {
         create() {
             let self = this;
+            axios.post('api/project/create', {
+                name: self.name,
+                description: self.description
+            }).then(function(response) {
+                self.$router.push({name: 'app.projects'});
+            });
         }
     }
 }
