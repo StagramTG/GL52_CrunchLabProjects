@@ -6,7 +6,12 @@
 
             <div class="form-field">
                 <span class="label">Nom</span>
-                <input type="text">
+                <input type="text" v-model="name">
+            </div>
+
+            <div class="form-field">
+                <span class="label">Description</span>
+                <textarea id="" rows="4"></textarea>
             </div>
 
             <div class="right">
@@ -18,8 +23,21 @@
 </template>
 
 <script>
+import axios from '@/services/api'
+
 export default {
-    
+    data() {
+        return {
+            name: '',
+            description: ''
+        }
+    },
+
+    methods: {
+        create() {
+            let self = this;
+        }
+    }
 }
 </script>
 

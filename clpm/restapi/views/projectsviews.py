@@ -154,11 +154,31 @@ def project_user_list(request, projectid):
 
 @api_view(['POST'])
 def add_user_to_project(request):
-    """ Add user to project's members """
-    pass
+    userid = request.data['userid']
+    projectid = request.data['projectid']
+
+    user = User.objects.filter(id=userid)[0]
+    project = Project.objects.get(id=projectid)
+
+    if user and project:
+        userproject = UserProject()
+        userproject.user_id = user
+        userproject.project_id = project
+        userproject.save()
+
+        return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 def delete_user_from_project(request):
-    """ Remove user from project's members """
-    pass
+    userid = request.data['userid']
+    projectid = request.data['projectid']
+
+    userproject = UserProject.objects.filter(user_id=userid, project_id=projectid)
+    if userproject:
+        userproject.delete()
+        return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)

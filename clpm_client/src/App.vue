@@ -132,6 +132,18 @@ export default {
                     border: 1px solid #00A86B;
                 }
             }
+
+            textarea {
+                font-family: inherit;
+                padding: 10px 10px 10px 10px;
+
+                border: none;
+                border-radius: 5px;
+
+                background-color: #EEEEEE;
+                outline: none;
+                resize: vertical;
+            }
         }
 
         .message {
