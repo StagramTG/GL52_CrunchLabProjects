@@ -103,16 +103,23 @@ export default {
 
             if (dataAreValide) {
                 let self = this;
-                axios.post('api/account/supply', {
+                axios.post('api/account/reload', {
                     amount: self.amount,
                     id: self.$route.params.id,
                 }).then(function(response){
                     if (response.status == 200) {
-                            self.$router.push('/app/wallet');
+
+                        axios.post('api/account/supply', {
+                            amount: self.amount,
+                            id: self.$route.params.id,
+                        }).then(function(response){
+                            if (response.status == 200) {
+                                    self.$router.push('/app/wallet');
+                            }
+                        })
                     }
                 })
             }
-
         }
     }
 }
