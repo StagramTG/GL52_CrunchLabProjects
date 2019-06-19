@@ -51,6 +51,12 @@ def project_create(request):
         project.account_id = account
         project.save()
 
+        # User role 'Créateur'
+        userproject = UserProject()
+        userproject.user_id = request.user
+        userproject.project_id = project
+        userproject.user_role = UserProject.objects.get_or_create(name='Créateur')
+
         return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
