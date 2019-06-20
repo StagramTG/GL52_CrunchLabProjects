@@ -44,7 +44,11 @@
                 <span class="label">Montant à créditer :</span>
                 <input type="number" v-model="amount" id="card-amount">
             </div>
-            <a href="" class="button success" @click.prevent="supply_wallet()">Confirmer</a>
+            
+            <div class="right">
+                <router-link :to="{name: 'app.wallet'}" class="button primary">Retour</router-link> &nbsp;
+                <a href="" class="button success" @click.prevent="supply_wallet()">Confirmer</a>
+            </div>
         </div>
     </div>
 </template>

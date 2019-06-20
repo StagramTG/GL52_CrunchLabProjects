@@ -6,7 +6,7 @@
             <router-link :to="{name : 'app.supply', params: {id: userData.id}}" class="button success">Ajouter des fonds</router-link><br><br>
             <table class="data-table">
                 <tbody>
-                <div class="exchange">
+                <div class="space-between">
                     <div class="transaction box" style="margin-right: 10px">
                         <h4>Dernières transactions :</h4><br>
                         <tr v-for="transaction in userTransactions" :key="transaction.account_id">
@@ -61,9 +61,13 @@ export default {
     .wallet {
         padding: 20px;
         overflow-y: auto;
-    }
-    .exchange {
-        display: flex;
-    }
 
+        .transaction {
+            flex: 1;
+        }
+
+        .reload {
+            flex: 1;
+        }
+    }
 </style>
