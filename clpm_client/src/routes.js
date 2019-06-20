@@ -25,6 +25,7 @@ import AdminUserModification from '@/components/pages/adminusers/AdminUserModifi
 
 import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
 import AdminRolesCreate from '@/components/pages/adminroles/AdminRolesCreate.vue'
+import SupplyWallet from "./components/pages/SupplyWallet";
 
 Vue.use(VueRouter);
 
@@ -74,6 +75,12 @@ const router = new VueRouter({
                 },
 
                 /** PROJECT ROUTES */
+                {
+                    path: 'supply',
+                    component : SupplyWallet,
+                    name: 'app.supply',
+                    meta: { authenticationNeeded: true },
+                },
                 {
                     path: 'projects',
                     component: Projects,

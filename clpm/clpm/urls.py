@@ -19,7 +19,8 @@ from django.urls import path, include
 from restapi.views import (
     index,
     userviews,
-    projectsviews
+    projectsviews,
+    walletviews
 )
 
 from restapi.views.authenticate import (
@@ -70,6 +71,14 @@ urlpatterns = [
     path('api/project/<int:projectid>/users', projectsviews.project_user_list),
     path('api/project/adduser', projectsviews.add_user_to_project),
     path('api/project/deleteuser', projectsviews.delete_user_from_project),
+
+    #Account api
+    path('api/account/<int:id>/details', walletviews.account_details),
+    path('api/account/transaction', walletviews.account_transaction),
+    path('api/account/<int:id>/transactionlist', walletviews.transaction_list),
+    path('api/account/reload', walletviews.account_reload),
+    path('api/account/<int:id>/reloadlist', walletviews.reload_list),
+    path('api/account/supply', walletviews.account_supply),
 
     # Admin
     path('admin/', admin.site.urls),
