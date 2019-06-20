@@ -73,6 +73,12 @@ const router = new VueRouter({
                     name: 'app.wallet',
                     meta: { authenticationNeeded: true },
                 },
+                {
+                    path: 'shop',
+                    component: Shop,
+                    name: 'app.shop',
+                    meta: { authenticationNeeded: true },
+                },
 
                 /** PROJECT ROUTES */
                 {
