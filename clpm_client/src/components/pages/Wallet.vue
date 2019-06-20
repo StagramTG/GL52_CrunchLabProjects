@@ -1,16 +1,27 @@
 <template>
     <div class="wallet">
         <div class="box">
-            <h3>Portefeuille</h3><br>
-            <h4>Solde : {{userData.balance}} €</h4>
-            <router-link :to="{name : 'app.supply', params: {id: userData.id}}" class="button success">Ajouter des fonds</router-link><br>
-            <h4>Dernières transactions :</h4>
+            <h2>Portefeuille</h2><br>
+            <h3>Solde : {{userData.balance}} €</h3>
+            <router-link :to="{name : 'app.supply', params: {id: userData.id}}" class="button success">Ajouter des fonds</router-link><br><br>
             <table class="data-table">
                 <tbody>
-                    <tr v-for="transaction in userTransactions" :key="transaction.account_id">
-                        <td>Transaction du : {{transaction.created_at}}</td>
-                        <td style="text-align: right">Montant : {{transaction.amount}} €</td>
-                    </tr>
+                <div class="exchange">
+                    <div class="transaction box" style="margin-right: 10px">
+                        <h4>Dernières transactions :</h4><br>
+                        <tr v-for="transaction in userTransactions" :key="transaction.account_id">
+                            <td>Transaction du : {{new Date(transaction.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
+                            <td style="text-align: right">Montant : {{transaction.amount}} €</td>
+                        </tr>
+                    </div>
+                    <div class="reload box">
+                        <h4>Derniers rechargements :</h4><br>
+                        <tr v-for="reload in userReloads" :key="reload.account_id">
+                            <td>Transaction du : {{new Date(reload.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
+                            <td style="text-align: right">Montant : {{reload.amount}} €</td>
+                        </tr>
+                    </div>
+                </div>
                 </tbody>
             </table>
         </div>
@@ -25,6 +36,7 @@ export default {
         return {
             userData: {},
             userTransactions: {},
+            userReloads: {},
         }
     },
     mounted() {
@@ -34,7 +46,10 @@ export default {
             axios.get('api/account/' + userId + '/details').then(function(response) {
                 self.userData = response.data;
             });
-            axios.get('api/account/' + userId + '/transaction').then(function(response) {
+            axios.get('api/account/' + userId + '/reloadlist').then(function(response) {
+                self.userReloads = response.data;
+            });
+            axios.get('api/account/' + userId + '/transactionlist').then(function(response) {
                 self.userTransactions = response.data;
             });
         })
@@ -47,4 +62,8 @@ export default {
         padding: 20px;
         overflow-y: auto;
     }
+    .exchange {
+        display: flex;
+    }
+
 </style>
