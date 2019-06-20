@@ -43,6 +43,10 @@ export default {
         grid-template-columns: 200px 1fr;
         grid-template-rows: 50px 1fr;
 
+        hr {
+            border: 1px solid #EEEEEE;
+        }
+
         .box {
             margin: 0 0 20px 0;
             background-color: #fff;
@@ -59,7 +63,7 @@ export default {
                 tr {
                     border-bottom: 1px solid #dedede;
 
-                    &:nth-child(odd) {background: #EEEEEE; }
+                    &:nth-child(odd) {background-color: #EEEEEE; }
 
                     td {
                         padding: 5px;

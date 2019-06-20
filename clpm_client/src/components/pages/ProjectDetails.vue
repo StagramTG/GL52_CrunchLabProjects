@@ -7,7 +7,19 @@
             </div>
 
             <p>{{ projectDetails.description }}</p>
+            <hr>
 
+            <h3>Membres du projet</h3>
+
+            <table class="data-table">
+                <tbody>
+                    <tr v-for="member in projectMembers" :key="member.id">
+                        <td>{{ member.user_id.first_name + ' ' + member.user_id.last_name }}</td>
+                        <td>{{ member.user_role.name }}</td>
+                        <td class="right"><a href="">Supprimer</a></td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
