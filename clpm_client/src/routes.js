@@ -11,6 +11,7 @@ import Site from '@/components/Site.vue'
 import Home from '@/components/pages/Home.vue'
 import Account from '@/components/pages/Account.vue'
 import Wallet from '@/components/pages/Wallet.vue'
+import Shop from '@/components/pages/Shop.vue'
 
 import Projects from '@/components/pages/Projects.vue'
 import ProjectCreation from '@/components/pages/ProjectCreation.vue'
