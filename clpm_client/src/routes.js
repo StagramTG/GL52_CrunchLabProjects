@@ -23,10 +23,12 @@ import AdminHome from '@/components/pages/AdminHome.vue'
 import AdminUserList from '@/components/pages/adminusers/AdminUserList.vue'
 import AdminUserCreation from '@/components/pages/adminusers/AdminUserCreation.vue'
 import AdminUserModification from '@/components/pages/adminusers/AdminUserModification.vue'
+import AdminProductsHome from "./components/pages/adminproducts/AdminProductsHome.vue"
+import AdminProductsCreate from "./components/pages/adminproducts/AdminProductsCreate.vue"
 
 import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
 import AdminRolesCreate from '@/components/pages/adminroles/AdminRolesCreate.vue'
-import SupplyWallet from "./components/pages/SupplyWallet";
+import SupplyWallet from "./components/pages/SupplyWallet"
 
 Vue.use(VueRouter);
 
@@ -142,6 +144,18 @@ const router = new VueRouter({
                     path: 'admin/roles/create',
                     component: AdminRolesCreate,
                     name: 'app.admin.roles.create',
+                    meta: { authenticationNeeded: true, adminOnly: true }
+                },
+                {
+                    path: 'admin/products',
+                    component: AdminProductsHome,
+                    name: 'app.admin.products',
+                    meta: { authenticationNeeded: true, adminOnly: true }
+                },
+                {
+                    path: 'admin/products/create',
+                    component: AdminProductsCreate,
+                    name: 'app.admin.products.create',
                     meta: { authenticationNeeded: true, adminOnly: true }
                 }
             ]

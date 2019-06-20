@@ -12,8 +12,8 @@ def product_list(request):
     serializer = ShopProductSerializer(products, many=True)
     return Response(data=serializer.data)
 
-
-def add_product(request):
+@api_view(['POST'])
+def create_product(request):
     name = request.data['name']
     price = request.data['price']
     description = request.data['description']

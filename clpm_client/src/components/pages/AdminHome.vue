@@ -10,6 +10,9 @@
                     <tr>
                         <td><router-link to="/app/admin/roles" class="link">Gestion des rôles pour les projets</router-link></td>
                     </tr>
+                    <tr>
+                        <td><router-link to="/app/admin/products" class="link">Gestion des produits de la boutique</router-link></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
