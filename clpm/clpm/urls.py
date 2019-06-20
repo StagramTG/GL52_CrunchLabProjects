@@ -80,6 +80,7 @@ urlpatterns = [
     path('api/account/<int:id>/reloadlist', walletviews.reload_list),
     path('api/account/supply', walletviews.account_supply),
 
+
     # Admin
     path('admin/', admin.site.urls),
 

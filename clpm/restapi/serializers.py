@@ -62,3 +62,9 @@ class TaskUserAssignementSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.TaskUserAssignement
         fields = ('id', 'user_id', 'task_id')
+
+
+class ShopProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Task
+        fields = ('name', 'price', 'description')
