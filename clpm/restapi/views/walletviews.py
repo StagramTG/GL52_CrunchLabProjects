@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 
 from datetime import date
 
-from ..serializers import AccountSerializer, AccountTransactionSerializer
+from ..serializers import AccountSerializer, AccountTransactionSerializer, AccountReloadSerializer
 from ..models import Account, AccountTransaction, AccountReload
 
 
@@ -44,32 +44,19 @@ def account_reload(request):
     """Update balance for the given user"""
     id = request.data['id']
     amount = float(request.data['amount'])
+    account = Account.objects.get(id=id)
 
-    reload = AccountReload.objects.create(
-        amount= amount,
-        created_at=date.today(),
-        account_id= Account.objects.get(id=id),
-    )
+    if account:
 
-    transaction = AccountTransaction.objects.create(
-        amount=amount,
-        created_at=date.today(),
-        account_id=Account.objects.get(id=id),
-    )
-    
-    if reload and transaction:
-        reload.save()
-        transaction.save()
-        return Response({}, status=status.HTTP_200_OK)
+        reload = AccountReload.objects.create(
+            amount= amount,
+            created_at=date.today(),
+            account_id= account,
+        )
 
-    """
-    account_transaction(request)
-
-    if reload :
-        reload.save()
-        return Response({}, status=status.HTTP_200_OK)
-
-    """
+        if reload :
+            reload.save()
+            return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -92,12 +79,28 @@ def account_supply(request):
 
 
 @api_view(['GET'])
+def reload_list(request, id):
+    account = Account.objects.get(id=id)
+
+    if account:
+        reloads = AccountReload.objects.filter(account_id=account).order_by('-created_at')[:5]
+        if reloads:
+            serializer = AccountReloadSerializer(reloads, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
 def transaction_list(request, id):
     """Get the list of user's transaction"""
-    transactions = AccountTransaction.objects.filter(account_id=Account.objects.get(id=id)).order_by('-created_at')[:5]
+    account = Account.objects.get(id=id)
 
-    if transactions:
-        serializer = AccountTransactionSerializer(transactions, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    if account:
+        transactions = AccountTransaction.objects.filter(account_id=account).order_by('-created_at')[:5]
+
+        if transactions:
+            serializer = AccountTransactionSerializer(transactions, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)

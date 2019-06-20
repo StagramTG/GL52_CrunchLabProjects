@@ -68,8 +68,10 @@ urlpatterns = [
 
     #Account api
     path('api/account/<int:id>/details', walletviews.account_details),
-    path('api/account/<int:id>/transaction', walletviews.transaction_list),
+    path('api/account/transaction', walletviews.account_transaction),
+    path('api/account/<int:id>/transactionlist', walletviews.transaction_list),
     path('api/account/reload', walletviews.account_reload),
+    path('api/account/<int:id>/reloadlist', walletviews.reload_list),
     path('api/account/supply', walletviews.account_supply),
 
     # Admin
