@@ -9,17 +9,25 @@
                 <div class="space-between">
                     <div class="transaction box" style="margin-right: 10px">
                         <h4>Dernières transactions :</h4><br>
-                        <tr v-for="transaction in userTransactions" :key="transaction.account_id">
-                            <td>Transaction du : {{new Date(transaction.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
-                            <td style="text-align: right">Montant : {{transaction.amount}} €</td>
-                        </tr>
+                        <table class="data-table">
+                            <tbody>
+                                <tr v-for="transaction in userTransactions" :key="transaction.account_id">
+                                    <td>Transaction du : {{new Date(transaction.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
+                                    <td style="text-align: right">Montant : {{transaction.amount}} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="reload box">
                         <h4>Derniers rechargements :</h4><br>
-                        <tr v-for="reload in userReloads" :key="reload.account_id">
-                            <td>Transaction du : {{new Date(reload.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
-                            <td style="text-align: right">Montant : {{reload.amount}} €</td>
-                        </tr>
+                        <table class="data-table">
+                            <tbody>
+                                <tr v-for="reload in userReloads" :key="reload.account_id">
+                                    <td>Transaction du : {{new Date(reload.created_at).toLocaleDateString('fr-FR', {year: 'numeric', month: 'numeric', day: 'numeric' })}}</td>
+                                    <td style="text-align: right">Montant : {{reload.amount}} €</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 </tbody>
