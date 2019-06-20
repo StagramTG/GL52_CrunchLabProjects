@@ -68,7 +68,6 @@ urlpatterns = [
     # Project User api
     path('api/user/<int:userid>/projects', projectsviews.user_project_list),
     path('api/project/<int:projectid>/users', projectsviews.project_user_list),
-    path('api/project/<int:projectid>/users', projectsviews.project_user_list),
     path('api/project/adduser', projectsviews.add_user_to_project),
     path('api/project/deleteuser', projectsviews.delete_user_from_project),
 

@@ -1,7 +1,14 @@
 <template>
     <div class="project-details">
         <div class="box">
-            Détails du projet
+            <div class="space-between">
+                <h3>Projet : {{ projectDetails.name }}</h3>
+                <router-link :to="{name: 'app.projects'}" class="button primary">Retour</router-link>
+            </div>
+
+            <p>{{ projectDetails.description }}</p>
+
+
         </div>
     </div>
 </template>
@@ -12,7 +19,8 @@ import axios from '@/services/api'
 export default {
     data() {
         return {
-            projectDetails: {}
+            projectDetails: {},
+            projectMembers: {}
         }
     },
 
@@ -21,6 +29,10 @@ export default {
         axios.get('api/project/' + self.$route.params.id + '/details')
             .then(function(response) {
                 self.projectDetails = response.data;
+                return axios.get('api/project/' + response.data.id + '/users');
+            })
+            .then(function(response) {
+                self.projectMembers = response.data;
             });
     }
 }

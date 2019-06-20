@@ -46,7 +46,7 @@ class ProjectRolesSerializer(serializers.ModelSerializer):
 class UserProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserProject
-        fields = ('id', 'user_id', 'project_id')
+        fields = ('id', 'user_id', 'project_id', 'user_role')
 
 
 class TaskSerializer(serializers.ModelSerializer):

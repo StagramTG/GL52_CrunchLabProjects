@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 
-from ..serializers import ProjectSerializer, ProjectRolesSerializer
+from ..serializers import ProjectSerializer, ProjectRolesSerializer, UserProjectSerializer
 from ..models import Project, User, Account, ProjectRoles, UserProject
 
 
@@ -157,8 +157,16 @@ def user_project_list(request, userid):
 
 @api_view(['GET'])
 def project_user_list(request, projectid):
-    """ Get project's users list """
-    pass
+    project = Project.objects.filter(id=projectid)[0]
+    if project:
+        projectusers = project.users.select_related('user_id', 'user_role').all()
+        users = set()
+        for user in projectusers:
+            users.add(user)
+        serializer = UserProjectSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
