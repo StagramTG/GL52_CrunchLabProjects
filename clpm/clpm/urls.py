@@ -84,6 +84,9 @@ urlpatterns = [
     #Products api
     path('api/products/list', shopviews.product_list),
     path('api/products/create', shopviews.create_product),
+    path('api/products/<int:id>/details', shopviews.product_details),
+    path('api/products/<int:id>/delete', shopviews.product_delete),
+    path('api/products/<int:id>/update', shopviews.product_update),
 
     # Admin
     path('admin/', admin.site.urls),

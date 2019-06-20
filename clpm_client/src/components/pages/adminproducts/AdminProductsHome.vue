@@ -12,6 +12,7 @@
                 <tbody>
                     <tr v-for="product in products" :key="product.id">
                         <td>{{product.name}} : {{product.price}} €</td>
+                        <td style="text-align: right"><router-link :to="{name : 'app.admin.products.modify', params: {id: product.id}}">Modifier</router-link></td>
                     </tr>
                 </tbody>
             </table>
@@ -37,7 +38,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
     .admin-products {
         padding: 20px;
         overflow-y: auto;

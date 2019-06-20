@@ -30,3 +30,45 @@ def create_product(request):
             return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def product_details(request, id):
+    product = ShopProduct.objects.get(id=id)
+
+    if product:
+        serializer = ShopProductSerializer(product)
+        return Response(data=serializer.data)
+
+    return Response({})
+
+
+@api_view(['POST'])
+def product_delete(request, id):
+    product = ShopProduct.objects.get(id=id)
+
+    if product:
+        product.delete()
+        return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def product_update(request, id):
+    name = request.data['name']
+    price = request.data['price']
+    description = request.data['description']
+
+    if name and price and description:
+        product = ShopProduct.objects.get(id=id)
+
+        if product:
+            product.name = name
+            product.price = price
+            product.description = description
+
+            product.save()
+            return Response({}, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
