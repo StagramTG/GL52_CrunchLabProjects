@@ -20,7 +20,8 @@ from restapi.views import (
     index,
     userviews,
     projectsviews,
-    walletviews
+    walletviews,
+    shopviews,
 )
 
 from restapi.views.authenticate import (
@@ -80,6 +81,14 @@ urlpatterns = [
     path('api/account/reload', walletviews.account_reload),
     path('api/account/<int:id>/reloadlist', walletviews.reload_list),
     path('api/account/supply', walletviews.account_supply),
+    path('api/account/<int:id>/update', walletviews.amount_update),
+
+    #Products api
+    path('api/products/list', shopviews.product_list),
+    path('api/products/create', shopviews.create_product),
+    path('api/products/<int:id>/details', shopviews.product_details),
+    path('api/products/<int:id>/delete', shopviews.product_delete),
+    path('api/products/<int:id>/update', shopviews.product_update),
 
     # Admin
     path('admin/', admin.site.urls),

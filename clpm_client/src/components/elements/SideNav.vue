@@ -5,6 +5,7 @@
             <li><router-link to="/app/account">Compte</router-link></li>
             <li><router-link to="/app/wallet">Portefeuille</router-link></li>
             <li><router-link to="/app/projects">Projets</router-link></li>
+            <li><router-link to="/app/shop">Boutique</router-link></li>
             <div v-if="is_admin">
                 <li><router-link to="/app/admin">Administration</router-link></li>
             </div>

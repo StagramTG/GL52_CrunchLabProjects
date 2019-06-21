@@ -106,3 +106,12 @@ Class TaskUserAssignement
 class TaskUserAssignement(models.Model):
     user_id = models.ForeignKey(to=User, on_delete=models.CASCADE)
     task_id = models.ForeignKey(to=Task, on_delete=models.CASCADE)
+
+
+"""
+Class ShopProducts
+"""
+class ShopProduct(models.Model):
+    name        = models.CharField(max_length=128)
+    price       = models.FloatField()
+    description = models.TextField()
