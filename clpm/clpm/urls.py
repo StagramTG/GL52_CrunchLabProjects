@@ -48,6 +48,7 @@ urlpatterns = [
 
     # User api
     path('api/user/list', userviews.users_list),
+    path('api/user/search/<str:username>', userviews.users_search),
     path('api/user/details', userviews.user_details),
     path('api/user/selfupdate', userviews.user_selfupdate),
     path('api/user/<int:id>/update', userviews.user_update),

@@ -43,7 +43,7 @@
 
                 <div class="right">
                     <router-link to="/app/admin/users" class="button primary">Retour</router-link> &nbsp;&nbsp;
-                    <a href="" class="button success" @click.prevent="update()">Modifier</a>
+                    <a href="" class="button success" @click.prevent="update()">Modifier</a> &nbsp;&nbsp;
                     <a href="" class="button danger" @click.prevent="delete_user()">Supprimer</a>
                 </div>
             </div>

@@ -9,7 +9,10 @@
             <p>{{ projectDetails.description }}</p>
             <hr>
 
-            <h3>Membres du projet</h3>
+            <div class="space-between">
+                <h3>Membres du projet</h3>
+                <router-link class="button success" :to="{name: 'app.projects.addmember'}">Ajouter un membre</router-link>
+            </div>
 
             <table class="data-table">
                 <tbody>
@@ -20,7 +23,6 @@
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
 </template>
@@ -46,6 +48,9 @@ export default {
             .then(function(response) {
                 self.projectMembers = response.data;
             });
+    },
+
+    methods: {
     }
 }
 </script>

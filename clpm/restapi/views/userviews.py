@@ -17,6 +17,13 @@ def users_list(request):
 
 
 @api_view(['GET'])
+def users_search(request, username):
+    users = User.objects.filter(username__icontains=username)
+    serializer = UserSerializer(users, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
 def user_details(request):
     serializer = UserSerializer(request.user)
     return Response(data=serializer.data)
