@@ -186,13 +186,13 @@ const router = new VueRouter({
 });
 
 // A DECOMMENTER EN PROD !!!! --> Ajouter une directive pour la partie admin !!!!
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.authenticationNeeded && !store.state.isAuthenticated)) {
         // You can use store variable here to access globalError or commit mutation 
         next("/Login");
     } else {
         next();
     }
-}); */
+});
 
 export default router;

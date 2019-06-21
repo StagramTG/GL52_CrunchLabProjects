@@ -7,8 +7,6 @@
 </template>
 
 <script>
-import axios from '@/services/api'
-
 import SideNav from './elements/SideNav.vue'
 import Navbar from './elements/Navbar.vue'
 
@@ -22,14 +20,14 @@ export default {
         SideNav,
         Navbar
     },
-    mounted() {
+    /*mounted() {
         let self = this;
         axios.get('api/user/details')
             .then(function(response) {
                 self.$store.commit('setUserData', response.data);
                 self.$router.push({name: 'app.projects'});
             })
-    }
+    }*/
 }
 </script>
 
