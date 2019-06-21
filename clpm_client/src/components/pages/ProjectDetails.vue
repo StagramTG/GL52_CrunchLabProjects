@@ -16,10 +16,10 @@
 
             <table class="data-table">
                 <tbody>
-                    <tr v-for="member in projectMembers" :key="member.id">
+                    <tr v-for="(member, index) in projectMembers" :key="index">
                         <td>{{ member.user_id.first_name + ' ' + member.user_id.last_name }}</td>
                         <td>{{ member.user_role.name }}</td>
-                        <td class="right"><a href="">Supprimer</a></td>
+                        <td class="right"><a href="" @click.prevent="removeMember(member.user_id.id)">Supprimer</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -51,6 +51,17 @@ export default {
     },
 
     methods: {
+        removeMember(id) {
+            let self = this;
+            axios.post('api/project/deleteuser', {
+                userid: id,
+                projectid: self.projectDetails.id
+            }).then(function(response) {
+                return axios.get('api/project/' + self.projectDetails.id + '/users');
+            }).then(function(response) {
+                self.projectMembers = response.data;
+            });
+        }
     }
 }
 </script>
