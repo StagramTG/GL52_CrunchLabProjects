@@ -2,7 +2,7 @@
     <div class="wallet">
         <div class="box">
             <h2>Portefeuille</h2><br>
-            <h3>Solde : {{userData.balance}} €</h3>
+            <h3>Solde : {{new Number(userData.balance).toFixed(2)}} €</h3>
             <router-link :to="{name : 'app.supply', params: {id: userData.id}}" class="button success">Ajouter des fonds</router-link><br><br>
             <table class="data-table">
                 <tbody>
