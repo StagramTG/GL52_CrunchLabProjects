@@ -173,14 +173,17 @@ def project_user_list(request, projectid):
 def add_user_to_project(request):
     userid = request.data['userid']
     projectid = request.data['projectid']
+    roleid = request.data['roleid']
 
     user = User.objects.filter(id=userid)[0]
     project = Project.objects.get(id=projectid)
+    role = ProjectRoles.objects.get(id=roleid)
 
-    if user and project:
+    if user and project and role:
         userproject = UserProject()
         userproject.user_id = user
         userproject.project_id = project
+        userproject.user_role = role
         userproject.save()
 
         return Response({}, status=status.HTTP_200_OK)
