@@ -46,7 +46,7 @@ export default {
             axios.get('api/user/details').then(function(response){
                 let userId = response.data.id;
                 axios.get('api/account/' + userId + '/details').then(function(response) {
-                    let amount = response.data.amount;
+                    let amount = response.data.balance;
                     let enough = true;
                     if (self.price > amount) {
                         document.querySelector('#insufficient-amount-msg').classList.remove('invisible');
