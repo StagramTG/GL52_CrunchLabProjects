@@ -2,7 +2,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
 
-from datetime import date
 
 from ..serializers import AccountSerializer, AccountTransactionSerializer, AccountReloadSerializer
 from ..models import Account, AccountTransaction, AccountReload
@@ -28,7 +27,6 @@ def account_transaction(request):
 
     transaction = AccountTransaction.objects.create(
         amount=amount,
-        created_at=date.today(),
         account_id=Account.objects.get(id=id),
     )
 
@@ -50,7 +48,6 @@ def account_reload(request):
 
         reload = AccountReload.objects.create(
             amount= amount,
-            created_at=date.today(),
             account_id= account,
         )
 
@@ -102,5 +99,19 @@ def transaction_list(request, id):
         if transactions:
             serializer = AccountTransactionSerializer(transactions, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
+
+    return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def amount_update(request, id):
+    account = Account.objects.get(id=id)
+    amount = request.data['amount']
+
+    if account and amount:
+        account.balance += -float(amount)
+        account.save()
+
+        return Response({}, status=status.HTTP_200_OK)
 
     return Response({}, status=status.HTTP_400_BAD_REQUEST)

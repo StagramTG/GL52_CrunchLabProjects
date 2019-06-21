@@ -30,6 +30,7 @@ import AdminProductsModification from "./components/pages/adminproducts/AdminPro
 import AdminRolesHome from '@/components/pages/adminroles/AdminRolesHome.vue'
 import AdminRolesCreate from '@/components/pages/adminroles/AdminRolesCreate.vue'
 import SupplyWallet from "./components/pages/SupplyWallet"
+import ShopCheckout from "./components/pages/ShopCheckout";
 
 
 Vue.use(VueRouter);
@@ -82,6 +83,12 @@ const router = new VueRouter({
                     path: 'shop',
                     component: Shop,
                     name: 'app.shop',
+                    meta: { authenticationNeeded: true },
+                },
+                {
+                    path: 'shop/checkout',
+                    component: ShopCheckout,
+                    name: 'app.shop.checkout',
                     meta: { authenticationNeeded: true },
                 },
 

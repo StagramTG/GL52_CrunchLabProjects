@@ -80,6 +80,7 @@ urlpatterns = [
     path('api/account/reload', walletviews.account_reload),
     path('api/account/<int:id>/reloadlist', walletviews.reload_list),
     path('api/account/supply', walletviews.account_supply),
+    path('api/account/<int:id>/update', walletviews.amount_update),
 
     #Products api
     path('api/products/list', shopviews.product_list),
